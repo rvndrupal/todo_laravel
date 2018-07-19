@@ -29,7 +29,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.create');
+        $permissions = Permission::get();  //se descargan todos los permisos
+        return view('roles.create', compact('permissions'));
     }
 
     /**
@@ -40,10 +41,13 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        $product=Product::create($request->all());
+        $role=Role::create($request->all());
+
+        //actualizamos los permisos
+        $role->permissions()->sync($request->get('permissions'));
         
-        return redirect()->route('roles.edit', $product->id)
-        ->with('info','Producto guardado con exito');
+        return redirect()->route('roles.edit', $role->id)
+        ->with('info','Role guardado con exito');
     }
    
 
@@ -66,11 +70,11 @@ class RoleController extends Controller
      * @param  \App\role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(role $role)
+    public function edit(Role $role)
     {
-        $roles = role::get();  //se descargan todos los roles
+        $permissions = Permission::get();  //se descargan todos los permisos
 
-        return view('roles.edit', compact('role', 'roles'));
+        return view('roles.edit', compact('role', 'permissions'));
     }
 
     /**
@@ -80,17 +84,17 @@ class RoleController extends Controller
      * @param  \App\role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, role $role)
+    public function update(Request $request, Role $role)
     {
-        //primero actualizamos el usuario
+        //actualizamos los roles
         $role->update($request->all());
 
-        //actualizamos los roles
-        $role->roles()->sync($request->get('roles'));
+        //actualizamos los permisos
+        $role->permissions()->sync($request->get('permissions'));
 
 
         return redirect()->route('roles.edit', $role->id)
-        ->with('info','Usuario actualizado con exito');
+        ->with('info','Role actualizado con exito');
 
     }
 

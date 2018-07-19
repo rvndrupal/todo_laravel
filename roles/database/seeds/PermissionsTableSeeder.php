@@ -58,7 +58,7 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name' => 'Ver detalle de roles',
+            'name' => 'Crear un nuevo Rol',
             'slug' => 'roles.create',
             'description'  => 'Crear un nuevo rol del sistema',
 
@@ -95,7 +95,7 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name' => 'Ver detalle de products',
+            'name' => 'Crea un nuevo Producto',
             'slug' => 'products.create',
             'description'  => 'Crear un nuevo producto del sistema',
 
