@@ -128,3 +128,32 @@ En el video 10 a la mitad
 
 /*************************************/
 
+
+/*************************************/
+
+13.- CREAR LA TABLA PIVOTE DE RELACIONES    
+
+VIDEO 2 DE RBLOG
+
+En el ejemplo se tiene una tabla llamada post y tag y se relacionan alfabeticamente
+
+Es a fuerzas el orden alfabetico
+
+php artisan make:migration create_post_tag_table
+
+/*************************************/
+
+14.- CREAR LAS RELACIONES   
+
+VIDEO 4 DEL BLOG  SUPER IMPORTANTE
+
+En el ejemplo se tiene una tabla llamada post y tag y se relacionan alfabeticamente
+
+Es a fuerzas el orden alfabetico
+
+
+
+/*************************************/
+
+
+
