@@ -42,6 +42,12 @@
                         </li>
                         @endcan
 
+                        @can('clientes.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
+                        </li>
+                        @endcan
+
                         @can('users.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>

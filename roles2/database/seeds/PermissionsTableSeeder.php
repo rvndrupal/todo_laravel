@@ -116,5 +116,43 @@ class PermissionsTableSeeder extends Seeder
         ]);
         //Products
 
+
+        //Clientes
+        Permission::create([
+            'name' => 'Navegar clientes',
+            'slug' => 'clientes.index',
+            'description'  => 'Lista y navega todos los clientes del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalle de clientes',
+            'slug' => 'clientes.show',
+            'description'  => 'Ver en detalle de cada cliente del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Crea un nuevo Cliente',
+            'slug' => 'clientes.create',
+            'description'  => 'Crear un nuevo cliente del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Edicion de clientes',
+            'slug' => 'clientes.edit',
+            'description'  => 'Editar cualquier dato de un cliente del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar producto',
+            'slug' => 'clientes.destroy',
+            'description'  => 'Eliminar cualquier cliente del sistema',
+
+        ]);
+        //Clientes
+
     }
 }
