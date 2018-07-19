@@ -6,10 +6,8 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Productos
-                    @can('products.create')
-                    <a href="{{ route('products.create') }}" class="btn btn-sm btn-primary pull-right">Nuevo</a>
-                    @endcan
+                    Usuarios
+                   
                 </div>
 
                 <div class="panel-body">
@@ -23,24 +21,24 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($products as $producto )
+                            @foreach ($users as $user )
                             <tr>
-                                <td>{{ $producto->id }}</td>
-                                <td>{{ $producto->name }}</td>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
                                 <td width="10px">
-                                @can('products.show')
-                                    <a href="{{ route('products.show', $producto->id) }}" class="btn btn-sm btn-default">Ver</a>
+                                @can('users.show')
+                                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-default">Ver</a>
                                 @endcan
                                 </td>
                                 <td width="10px">
-                                @can('products.edit')
-                                    <a href="{{ route('products.edit', $producto->id) }}" class="btn btn-sm btn-default">Editar</a>
+                                @can('users.edit')
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-default">Editar</a>
                                 @endcan
                                 </td>
                                 <td width="10px">
-                                @can('products.destroy')
+                                @can('users.destroy')
                                     
-                                {!! Form::open(['route'=>['products.destroy', $producto->id],
+                                {!! Form::open(['route'=>['users.destroy', $user->id],
                                 'method'=>'DELETE']) !!}
                                 <button class="btn btn-sm btn-danger">Eliminar</button>
                                 
@@ -55,7 +53,7 @@
                         </tbody>
                     </table>
 
-                    {{ $products->render() }}
+                    {{ $users->render() }}
                    
                 </div>
             </div>
