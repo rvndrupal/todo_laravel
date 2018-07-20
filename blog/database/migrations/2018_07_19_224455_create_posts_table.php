@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->string('slug', 128)->unique(); //campo unico
 
             $table->mediumText('excerpt')->nullable();
+            $table->string('body', 500)->nullable();
             $table->enum('status', ['PUBLISHED', 'DRAFT'])->default('DRAFT');
 
             $table->string('file',128)->nullable(); //puede ser nulo
