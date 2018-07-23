@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Tag;
-use App\Http\Requests\TagStoreRequest;
-use App\Http\Requests\TagUpdateRequest;
+use App\Http\Requests\CategoryStoreRequest;
+use App\Http\Requests\CategoryUpdateRequest;
 use Illuminate\Http\Request;
 
-class TagController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags=Tag::orderBy('id','DESC')->paginate(8);
+        $categories=Category::orderBy('id','DESC')->paginate(8);
 
-        return view('tags.index', compact('tags'));
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -28,7 +28,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('tags.create');
+        return view('categories.create');
     }
 
     /**
@@ -37,12 +37,12 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TagStoreRequest $request)
+    public function store(CategoryStoreRequest $request)
     {
-        $tag=Tag::create($request->all());
+        $category=Category::create($request->all());
         
-        return redirect()->route('tags.edit', $tag->id)
-        ->with('info','Etiqueta creada con exito');
+        return redirect()->route('categories.edit', $category->id)
+        ->with('info','Categoria creada con exito');
     }
 
     /**
@@ -51,10 +51,10 @@ class TagController extends Controller
      * @param  \App\Cliente  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Tag $tag)
+    public function show(Category $category)
     {
         //dd($product->id);
-        return view('tags.show', compact('tag'));
+        return view('categories.show', compact('category'));
     }
 
     /**
@@ -63,10 +63,10 @@ class TagController extends Controller
      * @param  \App\Cliente  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit(Category $category)
     {
         
-        return view('tags.edit', compact('tag'));
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -76,11 +76,11 @@ class TagController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(TagUpdateRequest $request, Tag $tag)
+    public function update(TagUpdateRequest $request, Category $category)
     {
         $tag->update($request->all());
-        return redirect()->route('tags.edit', $tag->id)
-        ->with('info','Etiqueta actualizada con exito');
+        return redirect()->route('categories.edit', $category->id)
+        ->with('info','Categoria Actualizada actualizada con exito');
 
     }
 
@@ -90,9 +90,9 @@ class TagController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tag $tag)
+    public function destroy(Category $category)
     {
-        $tag->delete();
+        $category->delete();
         return back()->with('info','Eliminado Correctamente');
     }
 }

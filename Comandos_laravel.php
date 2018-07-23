@@ -156,4 +156,26 @@ Es a fuerzas el orden alfabetico
 /*************************************/
 
 
+15.- CREAR LAS VALIDACIONES   
+
+VIDEO 11 DEL BLOG  
+
+se crea el metodo en este caso para store para la creacion se puede hacer para update
+
+php artisan make:request TagStoreRequest
+php artisan make:request TagUpdateRequest
+
+
+
+/*************************************/
+
+16.- COMO INSTALAR LARAVEL COLLECTIVE CON UNA VERSIÓN 5.5 O MÁS 
+
+VIDEO 13 DEL BLOG  
+
+
+
+/*************************************/
+
+
 

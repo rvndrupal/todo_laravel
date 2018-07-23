@@ -36,6 +36,9 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ route('blog') }}">Blog</a>
+                        </li>
                         @can('products.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('products.index') }}">Productos</a>
@@ -115,10 +118,31 @@
 
         @endif
 
+        @if(count($errors))
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="alert alert-danger">
+                            <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                
+                            @endforeach
+                            </ul>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        @endif
+
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('scripts') <!--para el script de slug-->
 </body>
 </html>

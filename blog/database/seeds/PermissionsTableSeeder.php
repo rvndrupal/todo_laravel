@@ -154,5 +154,42 @@ class PermissionsTableSeeder extends Seeder
         ]);
         //Clientes
 
+         //TAGS
+         Permission::create([
+            'name' => 'Navegar Etiquetas',
+            'slug' => 'tags.index',
+            'description'  => 'Lista y navega todos los tags del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalle de tags',
+            'slug' => 'tags.show',
+            'description'  => 'Ver en detalle de cada tag del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Crea una nueva Etiqueta',
+            'slug' => 'tags.create',
+            'description'  => 'Crear una nueva Etiqueta del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Edicion de tags',
+            'slug' => 'tags.edit',
+            'description'  => 'Editar cualquier Etiqueta del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar Tag',
+            'slug' => 'tags.destroy',
+            'description'  => 'Eliminar cualquier Eiqueta del sistema',
+
+        ]);
+        //TAGS
+
     }
 }
