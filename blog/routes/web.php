@@ -10,14 +10,33 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
+/*
+Route::get//('/', function () {
     return view('welcome');
-});
+//});
+*/
+
+Route::redirect('/','blog');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+
+//Ruta del blog
+Route::get('blog','Web\PageController@blog')->name('blog');
+
+//leer más
+Route::get('blog/{slug}','Web\PageController@post')->name('post');
+//para las categorias
+Route::get('categoria/{slug}','Web\PageController@category')->name('category');
+//tag
+Route::get('etiqueta/{slug}','Web\PageController@tag')->name('tag');
+
+
+
+
+
+
 
 //Se crean las rutas del sistema
 //MUY IMPORTANTE AGREGAR EL MIDDLAWERE AL ARCHIVO kERNEL.PHP
