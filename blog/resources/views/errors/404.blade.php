@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ route('home') }}">Ir al home</a>
+                    <a href="{{ route('blog') }}">Ir al home</a>
                    
                 </div>
             </div>

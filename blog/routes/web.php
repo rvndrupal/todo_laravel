@@ -112,6 +112,30 @@ Route::middleware(['auth'])->group(function(){
      ->middleware('permission:clientes.edit');
 
 
+     //rutas tags
+     Route::post('tags/store', 'TagController@store')->name('tags.store')
+     ->middleware('permission:tags.create');
+ 
+     Route::get('tags', 'TagController@index')->name('tags.index')
+     ->middleware('permission:tags.index');
+ 
+     Route::get('tags/create' , 'TagController@create')->name('tags.create')
+     ->middleware('permission:tags.create');
+ 
+     Route::put('tags/{tag}', 'TagController@update')->name('tags.update')
+     ->middleware('permission:tags.edit');
+ 
+     Route::get('tags/{tag}', 'TagController@show')->name('tags.show')
+     ->middleware('permission:tags.show');
+ 
+     Route::delete('tags/{tag}', 'TagController@destroy')->name('tags.destroy')
+     ->middleware('permission:tags.destroy');
+ 
+     Route::get('tags/{tag}/edit', 'TagController@edit')->name('tags.edit')
+     ->middleware('permission:tags.edit');
+       //rutas tags
+
+
     //rutas usuarios    
 
     Route::get('users', 'UserController@index')->name('users.index')
