@@ -6,12 +6,14 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                   {{ $tag->name }}
+                   {{ $category->name }}
                 </div>
 
                 <div class="panel-body">
-                <p> <strong>Nombre</strong> {{ $tag->name }}</p>
-                <p> <strong>Apellido Paterno</strong> {{ $tag->slug }}</p>
+                <p> <strong>Nombre</strong> {{ $category->name }}</p>
+                <p> <strong>Slug</strong> {{ $category->slug }}</p>
+                <hr>
+                <p> <strong>Descripción</strong> {{ $category->body }}</p>
                 
                 </div>
             </div>

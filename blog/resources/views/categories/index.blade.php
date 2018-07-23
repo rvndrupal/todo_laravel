@@ -7,8 +7,8 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     Etiquetas
-                    @can('tags.create')
-                    <a href="{{ route('tags.create') }}" class="btn btn-sm btn-primary pull-right">Nuevo</a>
+                    @can('categories.create')
+                    <a href="{{ route('categories.create') }}" class="btn btn-sm btn-primary pull-right">Nuevo</a>
                     @endcan
                 </div>
 
@@ -24,26 +24,26 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($tags as $tag )
+                            @foreach ($categories as $categorie )
                             <tr>
-                                <td>{{ $tag->id }}</td>
-                                <td>{{ $tag->name }}</td>
-                                <td>{{ $tag->slug }}</td>
+                                <td>{{ $categorie->id }}</td>
+                                <td>{{ $categorie->name }}</td>
+                                <td>{{ $categorie->slug }}</td>
                                 
                                 <td width="10px">
-                                @can('tags.show')
-                                    <a href="{{ route('tags.show', $tag->id) }}" class="btn btn-sm btn-default">Ver</a>
+                                @can('categories.show')
+                                    <a href="{{ route('categories.show', $categorie->id) }}" class="btn btn-sm btn-default">Ver</a>
                                 @endcan
                                 </td>
                                 <td width="10px">
-                                @can('tags.edit')
-                                    <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-sm btn-default">Editar</a>
+                                @can('categories.edit')
+                                    <a href="{{ route('categories.edit', $categorie->id) }}" class="btn btn-sm btn-default">Editar</a>
                                 @endcan
                                 </td>
                                 <td width="10px">
-                                @can('tags.destroy')
+                                @can('categories.destroy')
                                     
-                                {!! Form::open(['route'=>['tags.destroy', $tag->id],
+                                {!! Form::open(['route'=>['categories.destroy', $categorie->id],
                                 'method'=>'DELETE']) !!}
                                 <button class="btn btn-sm btn-danger">Eliminar</button>
                                 
@@ -58,7 +58,7 @@
                         </tbody>
                     </table>
 
-                    {{ $tags->render() }}
+                    {{ $categories->render() }}
                    
                 </div>
             </div>

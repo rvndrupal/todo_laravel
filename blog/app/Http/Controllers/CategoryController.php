@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Tag;
+use App\Category;
 use App\Http\Requests\CategoryStoreRequest;
 use App\Http\Requests\CategoryUpdateRequest;
 use Illuminate\Http\Request;
@@ -76,9 +76,9 @@ class CategoryController extends Controller
      * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(TagUpdateRequest $request, Category $category)
+    public function update(CategoryUpdateRequest $request, Category $category)
     {
-        $tag->update($request->all());
+        $category->update($request->all());
         return redirect()->route('categories.edit', $category->id)
         ->with('info','Categoria Actualizada actualizada con exito');
 

@@ -26,6 +26,7 @@ class CategoryUpdateRequest extends FormRequest
         return [
             'name' => 'required',
             'slug' => 'required|unique:categories,slug,',
+            'body' => 'required',
         ];
         
     }
