@@ -158,6 +158,29 @@ Route::middleware(['auth'])->group(function(){
      ->middleware('permission:categories.edit');
        //rutas categorias
 
+    //rutas post
+    Route::post('posts/store', 'PostController@store')->name('posts.store')
+    ->middleware('permission:posts.create');
+
+    Route::get('posts', 'PostController@index')->name('posts.index')
+    ->middleware('permission:posts.index');
+
+    Route::get('posts/create' , 'PostController@create')->name('posts.create')
+    ->middleware('permission:posts.create');
+
+    Route::put('posts/{post}', 'PostController@update')->name('posts.update')
+    ->middleware('permission:posts.edit');
+
+    Route::get('posts/{post}', 'PostController@show')->name('posts.show')
+    ->middleware('permission:posts.show');
+
+    Route::delete('posts/{post}', 'PostController@destroy')->name('posts.destroy')
+    ->middleware('permission:posts.destroy');
+
+    Route::get('posts/{post}/edit', 'PostController@edit')->name('posts.edit')
+    ->middleware('permission:posts.edit');
+      //rutas post
+
 
     //rutas usuarios    
 

@@ -74,6 +74,12 @@
                             <a class="nav-link" href="{{ route('categories.index') }}">Categorías</a>
                         </li>
                         @endcan
+
+                        @can('posts.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('posts.index') }}">Post</a>
+                        </li>
+                        @endcan
                         
 
                     </ul>

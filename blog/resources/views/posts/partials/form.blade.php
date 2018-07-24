@@ -1,3 +1,7 @@
+{!! Form::hidden('user_id', auth()->user()->id) !!} <!--con esto tomamos el Id del usuario -->
+
+
+
 <div class="from-group">    
     {!! Form::label('name','Nombre de la Categoría') !!}
     
@@ -10,7 +14,40 @@
         
         {!! Form::text('slug', null, ['class' => 'form-control', 'id'=>'slug']) !!}   
     
-    </div>
+</div>
+
+<div class="from-group">    
+    {!! Form::label('file','Imagen') !!}
+    
+    {!! Form::file('file') !!}   
+
+</div>
+
+<div class="from-group">    
+        {!! Form::label('category_id','Categorías') !!}
+        
+        {!! Form::select('category_id', $categories , null , ['class' => 'form-control']) !!}   <!--Se obtiene la categoria-->
+        
+</div>
+
+<div class="from-group"> 
+    <p><p></p>   
+    {!! Form::label('status','Estado') !!}<p>
+    <label>        
+        {{  Form::radio('status','PUBLISHED') }} Publicado <p>        
+    </label>
+    <label>        
+        {{  Form::radio('status','DRAFT') }} Borrador <p>        
+    </label>    
+
+</div>
+
+<div class="from-group"> 
+
+
+<div>
+
+
 
 <div class="from-group">    
         {!! Form::label('body','Descripción') !!}
