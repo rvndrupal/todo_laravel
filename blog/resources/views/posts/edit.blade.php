@@ -12,7 +12,7 @@
                 <div class="panel-body">
                 
                 {!! Form::model($post, ['route'=> ['posts.update', $post->id],
-                 'method'=>'PUT']) !!}
+                 'method'=>'PUT','files'=>true]) !!}
 
                 @include('posts.partials.form')
                 

@@ -156,6 +156,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    
     @yield('scripts') <!--para el script de slug-->
 </body>
 </html>

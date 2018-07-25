@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoryUpdateRequest extends FormRequest
+class PostUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,11 +23,23 @@ class CategoryUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        //barra con alt+124
+        $rules= [
             'name' => 'required',
-            'slug' => 'required|unique:categories,slug,',
-            'body' => 'required',
+            'slug' => 'required|unique:posts,slug', //se unico y obligatorio en la tabla tags
+            'user_id' =>'required|integer',
+            'category_id' =>'required|integer',
+            'tags' =>'required|array',
+            'body' =>'required',
+            'status' =>'required|in:DRAFT,PUBLISHED',
         ];
+
+        if($this->get('file'))
+        {
+            $rules=array_merge($rules,['file'=>'mimes:jpg,jpeg,png']);
+        }
+
+        return $rules;
         
     }
 }

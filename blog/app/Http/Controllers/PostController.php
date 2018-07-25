@@ -9,6 +9,9 @@ use App\Http\Requests\PostStoreRequest;
 use App\Http\Requests\PostUpdateRequest;
 use Illuminate\Http\Request;
 
+//para las imagenes
+use Illuminate\Support\Facades\Storage;
+
 class PostController extends Controller
 {
     /**
@@ -48,7 +51,17 @@ class PostController extends Controller
     public function store(PostStoreRequest $request)
     {
         $post=Post::create($request->all());
+
+        if($request->file('file')){ //i se manda el archivo
+            $path=Storage::disk('public')->put('image', $request->file('file'));
+            //utiliza la funcion de guardar en public crea la carpeta image y pasa el archivo
+            $post->fill(['file' => asset($path)])->save(); //actualizame la ruta en el post
+            //el asset toma toda la ruta y se genera correctamente toda la ruta
+        }
         
+        //relacion del post y los tags
+        $post->tags()->attach($request->get('tags'));
+
         return redirect()->route('posts.edit', $post->id)
         ->with('info','Post creada con exito');
     }
@@ -62,6 +75,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         //dd($product->id);
+         //validamos con la politica
+         $this->authorize('pass',$post);
         return view('posts.show', compact('post'));
     }
 
@@ -73,6 +88,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        //validamos con la politica
+        $this->authorize('pass',$post);
+
+
         //pasamos los valores de las categorias y los tags
         $categories=Category::orderBy('name','ASC')->pluck('name','id');//paso solo el nombre y el id
         $tags=Tag::orderBy('name','ASC')->get(); //paso para el arreglo
@@ -91,8 +110,20 @@ class PostController extends Controller
     {
         
         $post->update($request->all());
+
+
+        if($request->file('file')){ //si se manda el archivo
+            $path=Storage::disk('public')->put('image', $request->file('file'));
+            //utiliza la funcion de guardar en public crea la carpeta image y pasa el archivo
+            $post->fill(['file' => asset($path)])->save(); //actualizame la ruta en el post
+            //el asset toma toda la ruta y se genera correctamente toda la ruta
+        }
+        
+        //relacion del post y los tags ojo con el sync  sincroniza la actualización
+        $post->tags()->sync($request->get('tags'));
+
         return redirect()->route('posts.edit', $post->id)
-        ->with('info','Post Actualizada actualizada con exito');
+        ->with('info','Post Actualizada  con exito');
 
     }
 
@@ -104,6 +135,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        //validamos con la politica
+        $this->authorize('pass',$post);
         $post->delete();
         return back()->with('info','Eliminado Correctamente');
     }

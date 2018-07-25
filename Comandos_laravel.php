@@ -173,8 +173,41 @@ php artisan make:request TagUpdateRequest
 
 VIDEO 13 DEL BLOG  
 
+/*************************************/
 
+/*************************************/
 
+17.- SUBIR ARCHIVOS Y IMAGENES 
+
+VIDEO 22 DEL BLOG 
+
+Configurar  config->filesystem 
+
+'public' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+         'public' => [
+            'driver' => 'local',
+            'root' => public_path(), //esto se cambia
+            'url' => env('APP_URL').'/storage',
+            'visibility' => 'public',
+        ],
+
+/*************************************/
+
+18.- NIVEL DE SEGURIDAD CREAR POLITICAS DE SEGURIDAD
+
+php artisan make:policy  PostPolicy
+
+Agregar en app->providers->AuthServiceProvider
+use App\Post;
+use App\Policies\PostPolicy;
+
+   Post::class => PostPolicy::class
 /*************************************/
 
 

@@ -1,4 +1,4 @@
-{!! Form::hidden('user_id', auth()->user()->id) !!} <!--con esto tomamos el Id del usuario -->
+{{  Form::hidden('user_id', auth()->user()->id) }} <!--con esto tomamos el Id del usuario -->
 
 
 
@@ -43,11 +43,24 @@
 </div>
 
 <div class="from-group"> 
-
-
+    {{ Form::label('tags','Etiquetas') }}
+    <div>
+        @foreach ($tags as $tag)
+        <label>
+          {{ Form::checkbox('tags[]', $tag->id) }} {{ $tag->name }}  
+        </label>            
+        @endforeach
+    </div>  
 <div>
 
+<div class="from-group">    
+        {!! Form::label('excerpt','Texto corto') !!}
+        
+        {!! Form::textarea('excerpt', null, ['class' => 'form-control','rows'=>'2']) !!}   
+    
+</div>
 
+        
 
 <div class="from-group">    
         {!! Form::label('body','Descripción') !!}
@@ -69,6 +82,7 @@
 @section('scripts')
 
 <script src="{{ asset('vendor/stringToSlug/jquery.stringToSlug.min.js') }}"></script>
+//<script src="{{ asset('vendor/ckeditor/ckeditor.js') }}"></script>
 
 <script>    
     $(document).ready(function(){
@@ -78,7 +92,13 @@
             }
         });
     });
-
 </script>
+
+    /*CKEDITOR.config.height = 400;
+    CKEDITOR.config.width = 'auto';
+    CKEDITOR.replace('body');*/
+
+
+
 
 @endsection
