@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -39,6 +40,11 @@
                         @can('products.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('products.index') }}">Productos</a>
+                        </li>
+                        @endcan
+                        @can('clientess.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('clientes.index') }}">Clientes</a>
                         </li>
                         @endcan
 
@@ -94,6 +100,26 @@
                     <div class="col-md-8 col-md-offset-2">
                         <div class="alert alert-success">
                             {{ session('info') }}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        @endif
+
+        @if(count($errors))
+        <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="alert alert-danger">
+                            <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                                
+                            @endforeach
+                            </ul>
+                            
                         </div>
                     </div>
 
