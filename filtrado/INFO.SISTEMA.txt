@@ -18,4 +18,23 @@
 .-En la pagina principal hacer referencia al final del archivo nuevo app.js
 .-Se agrega la etiqueta  csrf-token en el header de principal.
 .-Se agrega un div con el id #app que envuelve a todo el contenido del body
+.-Se agrega el el view->contenido-> se agrega <example-component></example-component> para prueba del app.js
+.-Se corta todo lo de contenido se agrega a ExampleComponent de vue y se llama desde contenido.
+.-Ejecutar npm run dev
+
+
+6.-Configurando el menu con vue.js
+.-Cortar de la plantilla principal donde dice sidebar
+.-crear una carpeta plantilla->sidebar.blade.php y se pega
+.-Agregar en la principal
+.-Entrar a resource-> assets-> js  -> app.js
+.-En date se crea el menu
+.-En el archivo del siderbar se agregan las directivas del menu por cada sección @click="menu=0"
+.-Cambiar los Href="#"  por que se trabaja con componentes de vue
+.-En el archivo contenido se agregan los componenetes
+.-<template v-if="menu=0">
+lo que va
+</template>
+.-
+
 
