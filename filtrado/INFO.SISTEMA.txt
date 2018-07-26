@@ -52,4 +52,17 @@ lo que va
 .-Se cambia la acción del modal y se crea un evento abrirModal
 .-Videos 26 y 27 muy interesantes
 
+9.-Validación de datos
+.-Variable errorCategoria y errorMensaje mismo archivo categoria.vue
 
+10.-Actualizar lo mismo sobrel el mismo archivo
+
+11.-Borrar registros
+.-se carga la libreri Sweetalert2 
+.-Se carga la libreria resources->assets->plantilla->js
+.-actualizar el webpack.js
+
+
+11.-Paginador la hace con query builde 
+.-Agregar una libreria Facades\DB  en el controlador
+.-
