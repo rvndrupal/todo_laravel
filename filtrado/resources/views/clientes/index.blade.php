@@ -5,6 +5,25 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+                <div class="page-header">
+                    Busqueda de Clientes
+                    {{ Form::open(['route'=>'clientes.index', 'method'=>'GET','class'=>'form-inline pull-right']) }}
+                    <div class="form-group">
+                        {{ Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre']) }}
+                    </div>
+
+                    <div class="form-group">
+                            {{ Form::text('ap',null,['class'=>'form-control','placeholder'=>'Ap']) }}
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+
+                    {{ Form::close() }}
+
+                </div>
                 <div class="panel-heading">
                     Clientes
                     @can('clientes.create')
@@ -18,6 +37,7 @@
                             <tr>
                                 <th width="10px">ID</th>
                                 <th>Nombre</th>
+                                <th>Apellido</th>
                                 <th>Foto</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
@@ -28,6 +48,7 @@
                             <tr>
                                 <td>{{ $cliente->id }}</td>
                                 <td>{{ $cliente->name }}</td>
+                                <td>{{ $cliente->ap }}</td>
                                 <td>
                                     @if($cliente->file)
                                     <img src="{{ $cliente->file }}" class="foto_cliente">

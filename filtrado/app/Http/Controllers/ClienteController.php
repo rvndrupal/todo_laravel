@@ -14,9 +14,17 @@ class ClienteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $clientes=Cliente::paginate();
+        //obtenemos los valores por la url
+        $name=$request->get('name');
+        $ap=$request->get('ap');
+
+
+        $clientes=Cliente::orderBy('id','DESC')
+        ->name($name)
+        ->ap($ap)
+        ->paginate();
 
         return view('clientes.index', compact('clientes'));
     }
