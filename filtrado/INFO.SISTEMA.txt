@@ -1,0 +1,21 @@
+1.-la plantilla principal es la base.
+
+2.- Copiar los css y js en la carpeta public, cambiar las rutas para que jale
+
+3.-Se crea la carpeta contenido en Views para separar la plantilla en partes
+
+4.-Configurar con laravel mix, los archivos pasan a resources assets y se crean las carpetas
+.-Configurar al final un archivo que se llama webpack.mix.js
+.-Se tiene que tener node.js -> laragon lo tiene por default
+.-Terminal ejecutar-> npm install
+.-para ejecutar el mix -> npm run dev
+
+
+
+5.-Implementando Vue.js
+.-Assets->js->components->app.js
+.-se agrega el js al webpack.mix.js  del punto 4
+.-En la pagina principal hacer referencia al final del archivo nuevo app.js
+.-Se agrega la etiqueta  csrf-token en el header de principal.
+.-Se agrega un div con el id #app que envuelve a todo el contenido del body
+
