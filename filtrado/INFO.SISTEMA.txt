@@ -37,4 +37,19 @@ lo que va
 </template>
 .-
 
+7.-Migraciones
+.-Repaso crear modelo-> php artisan make:model User
+.-Repaso crear controller-> php artisan make:controller User  --resource   //genera los 7 eventos
+.-IMPORTANTE LECTURA VIDEO 24 ESTA LO DE ACTIVO Y INACTIVO genera los eventos en el Controller.
+.-Se crea una nueva categoria  resource-> assets-> js  llamada Categoria.vue
+.-Se modifica el app.js
+.-En categoria.vue en la parte de abajo se declaran las variables
+.-Se cambia contenido.blade el valor del menu 1
+.-Todas las modificaciones estan en categoria.vue checarlo con calma 
+
+8.-Insertar registros ventana modal 
+.-En categoria.vue se crea el  registrarCategoria hasta abajo
+.-Se cambia la acción del modal y se crea un evento abrirModal
+.-Videos 26 y 27 muy interesantes
+
 
