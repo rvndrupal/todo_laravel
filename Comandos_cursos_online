@@ -1,0 +1,9 @@
+Comandos del curso.
+
+1.- composer require intervention/image
+
+2.-composer require barryvdh/laravel-debugbar --dev
+
+3.-composer require "laravel/cashier":"~7.0"
+
+4.-composer require yajra/laravel-datatables-oracle:"~8.4"
