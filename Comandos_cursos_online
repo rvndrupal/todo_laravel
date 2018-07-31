@@ -7,3 +7,10 @@ Comandos del curso.
 3.-composer require "laravel/cashier":"~7.0"
 
 4.-composer require yajra/laravel-datatables-oracle:"~8.4"
+
+5.-Crear una relación de muchos a muchos
+.-Un estudiante puede tener muchos cursos y Un curso puede tener muchos estudiantes
+
+php artisan make:migration create_table_course_student
+
+.-Ojo estan en singular y en orden alfabetico
