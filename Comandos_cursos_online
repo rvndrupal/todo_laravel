@@ -24,3 +24,11 @@ composer require laravel/socialite
 7.-Activar el login
 
 php artisan make:auth
+
+*******************************************
+
+8.-Activar los archivos de las imagenes
+
+config->filesystem.php
+
+'default' => env('FILESYSTEM_DRIVER', 'local'), -> 'default' => env('FILESYSTEM_DRIVER', 'public'),
