@@ -14,3 +14,13 @@ Comandos del curso.
 php artisan make:migration create_table_course_student
 
 .-Ojo estan en singular y en orden alfabetico
+
+************************************************
+
+6.-Para las  redes sociales.
+
+composer require laravel/socialite
+
+7.-Activar el login
+
+php artisan make:auth
