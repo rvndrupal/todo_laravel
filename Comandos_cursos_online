@@ -32,3 +32,83 @@ php artisan make:auth
 config->filesystem.php
 
 'default' => env('FILESYSTEM_DRIVER', 'local'), -> 'default' => env('FILESYSTEM_DRIVER', 'public'),
+
+****************************************************************************************************
+
+9.-Tipos de Relaciones
+
+Uno a Uno
+************
+
+class User extends Model
+{
+   // Un telefono esta Asociado con un Usuario
+    public function phone()
+    {
+        return $this->hasOne('App\Phone');
+    }
+}
+
+Buscamos -->  $phone = User::find(1)->phone;
+
+*********************************
+Definir el Inverso de Uno a Uno
+
+**********************************************************************************************
+MUY IMPORTANTE ->>Podemos definir el inverso de una hasOne relación usando el belongsTo método:
+********************************************************************************************
+class Phone extends Model
+{
+    /**
+     * Get the user that owns the phone.
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+}
+
+*****************--------------------------------------**********************************
+
+UNO A MUCHOS
+
+Una relación "uno a muchos" se usa para definir las relaciones en las que un único modelo posee 
+cualquier cantidad de otros modelos. Por ejemplo, una publicación de blog puede tener una cantidad 
+infinita de comentarios. Como todas las otras relaciones Eloquentes, las relaciones uno a muchos se 
+definen al colocar una función en su modelo Eloquent:
+
+class Post extends Model
+{
+    /**
+     * Un post puede tener muchos comentarios
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+}
+
+consulta-->  $comments = App\Post::find(1)->comments;
+
+-->$comment = App\Post::find(1)->comments()->where('title', 'foo')->first();
+
+UNO A MUCHOS (INVERSO)
+Ahora que podemos acceder a todos los comentarios de una publicación, definamos una relación para permitir 
+que un comentario acceda a su publicación principal. Para definir el inverso de una hasManyrelación, defina 
+una función de relación en el modelo hijo que llama al  belongsTométodo:
+
+class Comment extends Model
+{
+    /**
+     * Un comentario acceda a su publicación
+     */
+    public function post()
+    {
+        return $this->belongsTo('App\Post');
+    }
+}
+
+consulta --> $comment = App\Comment::find(1);
+
+echo $comment->post->title;
+
