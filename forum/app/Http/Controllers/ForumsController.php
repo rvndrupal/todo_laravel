@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Forum;
 use Illuminate\Http\Request;
 
-class ForumController extends Controller
+class ForumsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,9 @@ class ForumController extends Controller
      */
     public function index()
     {
-        //
+        $forums=Forum::latest()->paginate(3);
+        //dd($forums);
+        return view('forums.index',compact('forums'));
     }
 
     /**
