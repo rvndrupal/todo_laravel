@@ -29,8 +29,8 @@ class CreateCoursesTable extends Migration
             $table->string('picture')->nullable();
             $table->enum('status', [
             \App\Course::PUBLISHED,
-            \App\Course::PENDIG,
-            \App\Course::REJECTED])->default(\App\Course::PENDIG);
+            \App\Course::PENDING,
+            \App\Course::REJECTED])->default(\App\Course::PENDING);
             $table->boolean('previous_approved')->default(false);
             $table->boolean('previous_rejected')->default(false);
             $table->timestamps();
