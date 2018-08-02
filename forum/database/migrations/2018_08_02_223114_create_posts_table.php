@@ -15,6 +15,16 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->unsignedInteger('user_id'); //solo positivos
+            $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedInteger('forum_id'); //solo positivos
+            $table->foreign('forum_id')->references('id')->on('forums');
+
+            $table->string('title');
+            $table->text('description');
+
             $table->timestamps();
         });
     }

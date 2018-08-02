@@ -48,7 +48,12 @@ class ForumsController extends Controller
      */
     public function show(Forum $forum)
     {
-        //
+        //dd($forum);
+        $posts=$forum->posts()->with(['owner'])->paginate(4);  
+        //muestra la relacion del forum cuantos post tiene por autor y los pagina de 2 en 2
+        return view('forums.show',compact('posts'));
+
+        
     }
 
     /**

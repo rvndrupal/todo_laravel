@@ -1,25 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="row">
+<div class="row"></div>
     <div class="col-md-8 col-md-offset-2">
-            <h1 class="text-center text-muted">{{ __("Foros") }}</h1>
+            <h1 class="text-center text-muted">{{ __("Posts") }}</h1>
        
-            @forelse($forums as $forum)
+            @forelse($posts as $post)
             <div class="panel panel-default">
                     <div class="panel-heading">
                         
-                            <a href="./forums/{{ $forum->id }}">  {{ $forum->name }}</a>
-
+                            <a href="./post/{{ $post->id }}">  {{ $post->title }}</a>
                             <span class="pull-right">
-                                    {{ __("Posts") }} : {{ $forum->posts->count() }}
-                            <!--de la relacion del post con el forum por eso puedo obtener el numero de post-->
+                                    {{ __("Autor") }} : {{ $post->owner->name }}
+                            <!--el owner es la relacion con el model post que le pusimos owner y te trai los datos del usuario-->
                             </span>
         
                     </div>
         
                     <div class="panel-body">
-                       {{ $forum->description }} 
+                       {{ $post->description }} 
                     </div>
                 </div>
 
@@ -27,14 +26,14 @@
             @empty
 
             <div class="alert alert-danger">
-                {{ __("No hay ningun Foro") }}
+                {{ __("No hay ningun Post en este Momento") }}
             </div>
 
             @endforelse
 
-            @if($forums->count())
+            @if($posts->count())
             
-                {{ $forums->links() }}
+                {{ $posts->links() }}
             
             @endif
     </div>

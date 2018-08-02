@@ -20,3 +20,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/','ForumsController@index');
+Route::get('/forums/{forum}','ForumsController@show');
