@@ -71,7 +71,7 @@
                 </div>
             </div>
         </nav>
-        <div class="container">
+        <div class="container" style="padding: 100px">
 
             @if(session('info'))
 

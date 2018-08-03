@@ -25,3 +25,4 @@ Route::post('/forums', 'ForumsController@store')->name('store');
 
 //post
 Route::get('/posts/{post}', 'PostsController@show');
+Route::post('/posts', 'PostsController@store');

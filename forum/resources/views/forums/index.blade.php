@@ -41,6 +41,12 @@
 
 
             {{--  creamos el formulario  --}}
+            <h2>{{ __("Añadir un nuevo Foro") }}</h2>
+
+            <hr>
+
+            @include('partials.errors')
+            
             <form action="./forums" method="POST">
                 {{--  para que aparescan los campos automaticos-->> b4-form-textarea  --}}
                 {{ csrf_field() }}
