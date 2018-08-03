@@ -17,7 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/','ForumsController@index');
+Route::get('/','ForumsController@index')->name('home');
 Route::get('/forums/{forum}','ForumsController@show');
+Route::post('/forums', 'ForumsController@store')->name('store');
+
+//post
+Route::get('/posts/{post}', 'PostsController@show');

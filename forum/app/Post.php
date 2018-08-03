@@ -19,4 +19,12 @@ class Post extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    //mostrar lo que tiene un post con las respuestas que pueda tener
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
+        //un post tiene muchas respuestas
+
+    }
+
 }
