@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -39,6 +40,12 @@
                         @can('products.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('products.index') }}">Productos</a>
+                        </li>
+                        @endcan
+
+                        @can('sliders.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('sliders.index') }}">Slider</a>
                         </li>
                         @endcan
 

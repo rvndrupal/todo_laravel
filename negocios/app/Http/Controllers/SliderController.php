@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\SliderStoreRequest;
 
 class SliderController extends Controller
 {
@@ -14,7 +16,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        //
+        $sliders=Slider::orderBy('id','ASC')->paginate(5);
+        return view('sliders.index', compact('sliders'));
     }
 
     /**
@@ -24,7 +27,7 @@ class SliderController extends Controller
      */
     public function create()
     {
-        //
+        return view('sliders.create');
     }
 
     /**
@@ -33,9 +36,19 @@ class SliderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SliderStoreRequest $request)
     {
-        //
+        $slider=Slider::create($request->all());
+
+        if($request->file('file')){ //si se manda el archivo
+            $path=Storage::disk('public')->put('image', $request->file('file'));
+            //utiliza la funcion de guardar en public crea la carpeta image y pasa el archivo
+            $slider->fill(['file' => asset($path)])->save(); //actualizame la ruta en el post
+            //el asset toma toda la ruta y se genera correctamente toda la ruta
+        }
+        
+        return redirect()->route('clientes.index', $slider->id)
+        ->with('info','Slider guardado con exito');
     }
 
     /**
@@ -46,7 +59,7 @@ class SliderController extends Controller
      */
     public function show(Slider $slider)
     {
-        //
+        return view('sliders.show', compact('slider'));
     }
 
     /**
@@ -57,7 +70,7 @@ class SliderController extends Controller
      */
     public function edit(Slider $slider)
     {
-        //
+        return view('sliders.edit', compact('slider'));
     }
 
     /**
@@ -67,9 +80,20 @@ class SliderController extends Controller
      * @param  \App\Slider  $slider
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Slider $slider)
+    public function update(SliderStoreRequest $request, Slider $slider)
     {
-        //
+        $slider->update($request->all());
+
+        if($request->file('file')){ //si se manda el archivo
+            $path=Storage::disk('public')->put('image', $request->file('file'));
+            //utiliza la funcion de guardar en public crea la carpeta image y pasa el archivo
+            $slider->fill(['file' => asset($path)])->save(); //actualizame la ruta en el post
+            //el asset toma toda la ruta y se genera correctamente toda la ruta
+        }
+
+        return redirect()->route('sliders.index', $slider->id)
+        ->with('info','Slider actualizado con exito');
+
     }
 
     /**
@@ -80,6 +104,7 @@ class SliderController extends Controller
      */
     public function destroy(Slider $slider)
     {
-        //
+        $slider->delete();
+        return back()->with('info','Eliminado Correctamente');
     }
 }

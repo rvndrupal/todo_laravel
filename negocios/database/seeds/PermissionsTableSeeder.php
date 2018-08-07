@@ -116,5 +116,42 @@ class PermissionsTableSeeder extends Seeder
         ]);
         //Products
 
+         //Slider
+         Permission::create([
+            'name' => 'Navegar Slider',
+            'slug' => 'sliders.index',
+            'description'  => 'Lista y navega todos los sliders del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalle de sliders',
+            'slug' => 'sliders.show',
+            'description'  => 'Ver en detalle cada producto del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Crea un nuevo Slider',
+            'slug' => 'sliders.create',
+            'description'  => 'Crear un nuevo Slider del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Edicion de sliders',
+            'slug' => 'sliders.edit',
+            'description'  => 'Editar cualquier dato de un Slider del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar Slider',
+            'slug' => 'sliders.destroy',
+            'description'  => 'Eliminar cualquier dato de un Slider del sistema',
+
+        ]);
+        //Slider
+
     }
 }

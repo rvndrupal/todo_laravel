@@ -97,4 +97,27 @@ Route::middleware(['auth'])->group(function(){
     Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
     ->middleware('permission:users.edit');
 
+     //rutas slider
+     Route::post('sliders/store', 'SliderController@store')->name('sliders.store')
+     ->middleware('permission:sliders.create');
+ 
+     Route::get('sliders', 'SliderController@index')->name('sliders.index')
+     ->middleware('permission:sliders.index');
+ 
+     Route::get('sliders/create' , 'SliderController@create')->name('sliders.create')
+     ->middleware('permission:sliders.create');
+ 
+     Route::put('sliders/{slider}', 'SliderController@update')->name('sliders.update')
+     ->middleware('permission:sliders.edit');
+ 
+     Route::get('sliders/{slider}', 'SliderController@show')->name('sliders.show')
+     ->middleware('permission:sliders.show');
+ 
+     Route::delete('sliders/{slider}', 'SliderController@destroy')->name('sliders.destroy')
+     ->middleware('permission:sliders.destroy');
+ 
+     Route::get('sliders/{slider}/edit', 'SliderController@edit')->name('sliders.edit')
+     ->middleware('permission:sliders.edit');
+ 
+
 });
