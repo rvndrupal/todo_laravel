@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class SlidersTableSeeder extends Seeder
+class AboutsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,7 @@ class SlidersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Slider::class, 3)->create();
+        factory(App\About::class, 3)->create();
     }
+    
 }

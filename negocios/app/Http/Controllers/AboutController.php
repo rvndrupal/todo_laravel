@@ -2,27 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Front;
-use App\Slider;
-
+use App\About;
 use Illuminate\Http\Request;
 
-
-class FrontController extends Controller
+class AboutController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request )
+    public function index()
     {
-        //recupera la info del slider
-        $sliders=Slider::orderBy('id','asc')->take(5)->get();
-
-        //dd($sliders);
-
-        return view('front',compact('sliders'));
+        //
     }
 
     /**
@@ -49,10 +41,10 @@ class FrontController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Front  $front
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function show(Front $front)
+    public function show(About $about)
     {
         //
     }
@@ -60,10 +52,10 @@ class FrontController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Front  $front
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function edit(Front $front)
+    public function edit(About $about)
     {
         //
     }
@@ -72,10 +64,10 @@ class FrontController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Front  $front
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Front $front)
+    public function update(Request $request, About $about)
     {
         //
     }
@@ -83,10 +75,10 @@ class FrontController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Front  $front
+     * @param  \App\About  $about
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Front $front)
+    public function destroy(About $about)
     {
         //
     }

@@ -125,6 +125,29 @@ Route::middleware(['auth'])->group(function(){
  
      Route::get('sliders/{slider}/edit', 'SliderController@edit')->name('sliders.edit')
      ->middleware('permission:sliders.edit');
+
+
+     //rutas About
+     Route::post('abouts/store', 'AboutController@store')->name('abouts.store')
+     ->middleware('permission:abouts.create');
+ 
+     Route::get('abouts', 'AboutController@index')->name('abouts.index')
+     ->middleware('permission:abouts.index');
+ 
+     Route::get('abouts/create' , 'AboutController@create')->name('abouts.create')
+     ->middleware('permission:abouts.create');
+ 
+     Route::put('abouts/{about}', 'AboutController@update')->name('abouts.update')
+     ->middleware('permission:abouts.edit');
+ 
+     Route::get('abouts/{about}', 'AboutController@show')->name('abouts.show')
+     ->middleware('permission:abouts.show');
+ 
+     Route::delete('abouts/{about}', 'AboutController@destroy')->name('abouts.destroy')
+     ->middleware('permission:abouts.destroy');
+ 
+     Route::get('abouts/{about}/edit', 'AboutController@edit')->name('abouts.edit')
+     ->middleware('permission:abouts.edit');
  
 
 });

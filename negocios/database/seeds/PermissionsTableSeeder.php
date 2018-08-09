@@ -127,7 +127,7 @@ class PermissionsTableSeeder extends Seeder
         Permission::create([
             'name' => 'Ver detalle de sliders',
             'slug' => 'sliders.show',
-            'description'  => 'Ver en detalle cada producto del sistema',
+            'description'  => 'Ver en detalle cada slider del sistema',
 
         ]);
 
@@ -152,6 +152,45 @@ class PermissionsTableSeeder extends Seeder
 
         ]);
         //Slider
+
+
+
+        //About
+        Permission::create([
+            'name' => 'Navegar About',
+            'slug' => 'abouts.index',
+            'description'  => 'Lista y navega todos los abouts del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalle de abouts',
+            'slug' => 'abouts.show',
+            'description'  => 'Ver en detalle cada about del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Crea un nuevo about',
+            'slug' => 'abouts.create',
+            'description'  => 'Crear un nuevo about del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Edicion de abouts',
+            'slug' => 'abouts.edit',
+            'description'  => 'Editar cualquier dato de un about del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar about',
+            'slug' => 'abouts.destroy',
+            'description'  => 'Eliminar cualquier dato de un about del sistema',
+
+        ]);
+        //About
 
     }
 }
