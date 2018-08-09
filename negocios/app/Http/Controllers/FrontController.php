@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Front;
 use App\Slider;
+
 use Illuminate\Http\Request;
+
 
 class FrontController extends Controller
 {
@@ -13,11 +15,14 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request )
     {
-        $sliders=Slider::orderBy('id','ASC');
+        //recupera la info del slider
+        $sliders=Slider::all();
 
-        return view('fronts.index', compact('sliders'));
+        //dd($sliders);
+
+        return view('front',compact('sliders'));
     }
 
     /**

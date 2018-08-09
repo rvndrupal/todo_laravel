@@ -24,11 +24,14 @@ class SliderController extends Controller
         ->titulo($titulo)  //titulo viene del sope creado en el modelo que se llama scopeTitulo
         ->subtitulo($sub) //lo mismo
         ->paginate(5);
+
+        //dd($sliders);
      
         
 
 
-        return view('sliders.index', compact('sliders'));
+        return view('sliders.index', compact('sliders'));       
+        
     }
 
     /**
