@@ -21,8 +21,8 @@ class CreateAboutsTable extends Migration
             $table->string('l1');
             $table->string('l2');
             $table->string('l3');
-            $table->string('l4');
-            $table->string('l5');
+            $table->string('l4')->nullable();
+            $table->string('l5')->nullable();
             $table->string('file',200);
             $table->timestamps();
         });
