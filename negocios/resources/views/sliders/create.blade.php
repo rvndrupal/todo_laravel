@@ -6,14 +6,14 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                   Nuevo Cliente
+                   Nuevo Slider
                 </div>
 
                 <div class="panel-body">
                 
-                {!! Form::open(['route'=> 'clientes.store','files'=>true]) !!}
+                {!! Form::open(['route'=> 'sliders.store','files'=>true]) !!}
 
-                @include('clientes.partials.form')
+                @include('sliders.partials.form')
                 
                 {!! Form::close() !!}
                 

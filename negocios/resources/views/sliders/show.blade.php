@@ -7,6 +7,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                    Slider
+                   Sliders
+                    @can('sliders.index')
+                    <a href="{{ route('sliders.index') }}" class="btn btn-sm btn-primary pull-right">Volver</a>
+                    @endcan
                 </div>
 
                 <div class="panel-body">

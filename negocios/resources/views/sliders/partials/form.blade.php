@@ -1,19 +1,19 @@
 <div class="from-group">    
-    {!! Form::label('name','Nombre del Producto') !!}
+    {!! Form::label('titulo','Título Slider') !!}
     
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}   
-    
-</div>
-
-<div class="from-group">    
-    {!! Form::label('ap','Apellido Paterno') !!}
-    
-    {!! Form::text('ap', null, ['class' => 'form-control']) !!}   
+    {!! Form::text('titulo', null, ['class' => 'form-control']) !!}   
     
 </div>
 
 <div class="from-group">    
-    {!! Form::label('file','Foto') !!}
+    {!! Form::label('subtitulo','Subtítulo del slider') !!}
+    
+    {!! Form::text('subtitulo', null, ['class' => 'form-control']) !!}   
+    
+</div>
+
+<div class="from-group">    
+    {!! Form::label('file','Imagen') !!}
     
     {!! Form::file('file') !!}   
 

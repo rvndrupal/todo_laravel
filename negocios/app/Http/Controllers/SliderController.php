@@ -14,9 +14,20 @@ class SliderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $sliders=Slider::orderBy('id','ASC')->paginate(5);
+        //para los filtros de busqueda
+        $titulo=$request->get('titulo');
+        $sub=$request->get('subtitulo');
+
+        $sliders=Slider::orderBy('id','ASC')
+        ->titulo($titulo)  //titulo viene del sope creado en el modelo que se llama scopeTitulo
+        ->subtitulo($sub) //lo mismo
+        ->paginate(5);
+     
+        
+
+
         return view('sliders.index', compact('sliders'));
     }
 
@@ -47,7 +58,7 @@ class SliderController extends Controller
             //el asset toma toda la ruta y se genera correctamente toda la ruta
         }
         
-        return redirect()->route('clientes.index', $slider->id)
+        return redirect()->route('sliders.index', $slider->id)
         ->with('info','Slider guardado con exito');
     }
 

@@ -6,15 +6,15 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                   Nuevo Producto
+                   Editar Slider
                 </div>
 
                 <div class="panel-body">
                 
-                {!! Form::model($cliente, ['route'=> ['clientes.update', $cliente->id],
+                {!! Form::model($slider, ['route'=> ['sliders.update', $slider->id],
                  'method'=>'PUT','files'=>true]) !!}
 
-                @include('clientes.partials.form')
+                @include('sliders.partials.form')
                 
                 {!! Form::close() !!}
                 

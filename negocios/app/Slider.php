@@ -12,14 +12,14 @@ class Slider extends Model
 
      //Scope   busquedas del  sistema por Query scope
     
-     public function scopeName($query, $titulo)
+     public function scopeTitulo($query, $titulo)
      {
          if ($titulo) {
              return $query->where('titulo', 'LIKE', "%$titulo%");
          }
      }
  
-     public function scopeAp($query, $subtitulo)
+     public function scopeSubtitulo($query, $subtitulo)
      {
          if ($subtitulo) {
              return $query->where('subtitulo', 'LIKE', "%$subtitulo%");

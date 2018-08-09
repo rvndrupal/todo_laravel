@@ -19,13 +19,16 @@ Route::get('/', function () {
     return view('home.home');
 });
 
+Route::get('/', 'FrontController@index')->name('fronts.index');
+
+
 
 
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 
 
