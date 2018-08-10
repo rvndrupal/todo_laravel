@@ -223,10 +223,14 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline services-head text-center">
-            <h2>Our Services</h2>
+            <h2>Nuestros Servicios</h2>
           </div>
         </div>
       </div>
+
+
+
+      @foreach ($services as $service )
       <div class="row text-center">
         <div class="services-contents">
           <!-- Start Left services -->
@@ -235,17 +239,23 @@
               <div class="services-details">
                 <div class="single-services">
                   <a class="services-icon" href="#">
-											<i class="fa fa-code"></i>
+											<i class="{{ $service->icon }}"></i>
 										</a>
-                  <h4>Expert Coder</h4>
+                  <h4>{{ $service->titulo }}</h4>
                   <p>
-                    will have to make sure the prototype looks finished by inserting text or photo.make sure the prototype looks finished by.
+                   {{ $service->body }}
                   </p>
                 </div>
               </div>
               <!-- end about-details -->
             </div>
           </div>
+          @endforeach 
+
+
+
+
+          {{--  
           <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="about-move">
               <div class="services-details">
@@ -331,11 +341,12 @@
               </div>
               <!-- end about-details -->
             </div>
-          </div>
+          </div>--}}
         </div>
       </div>
     </div>
   </div>
+  
   <!-- End Service area -->
 
   <!-- our-skill-area start -->
