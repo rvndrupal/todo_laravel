@@ -53,7 +53,7 @@ class AboutController extends Controller
         if($request->file('file')){ //si se manda el archivo
             $path=Storage::disk('public')->put('about', $request->file('file'));
             //utiliza la funcion de guardar en public crea la carpeta image y pasa el archivo
-            $slider->fill(['file' => asset($path)])->save(); //actualizame la ruta en el post
+            $about->fill(['file' => asset($path)])->save(); //actualizame la ruta en el post
             //el asset toma toda la ruta y se genera correctamente toda la ruta
         }
         
