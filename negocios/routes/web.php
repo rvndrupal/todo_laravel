@@ -148,6 +148,29 @@ Route::middleware(['auth'])->group(function(){
  
      Route::get('abouts/{about}/edit', 'AboutController@edit')->name('abouts.edit')
      ->middleware('permission:abouts.edit');
+
+
+      //rutas Servicios
+      Route::post('services/store', 'ServiceController@store')->name('services.store')
+      ->middleware('permission:services.create');
+  
+      Route::get('services', 'ServiceController@index')->name('services.index')
+      ->middleware('permission:services.index');
+  
+      Route::get('services/create' , 'ServiceController@create')->name('services.create')
+      ->middleware('permission:services.create');
+  
+      Route::put('services/{service}', 'ServiceController@update')->name('services.update')
+      ->middleware('permission:services.edit');
+  
+      Route::get('services/{service}', 'ServiceController@show')->name('services.show')
+      ->middleware('permission:services.show');
+  
+      Route::delete('services/{service}', 'ServiceController@destroy')->name('services.destroy')
+      ->middleware('permission:services.destroy');
+  
+      Route::get('services/{service}/edit', 'ServiceController@edit')->name('services.edit')
+      ->middleware('permission:services.edit');
  
 
 });

@@ -192,5 +192,44 @@ class PermissionsTableSeeder extends Seeder
         ]);
         //About
 
+
+         //Services
+         Permission::create([
+            'name' => 'Navegar Servicios',
+            'slug' => 'services.index',
+            'description'  => 'Lista y navega todos los servicios del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalle de los Servicios',
+            'slug' => 'services.show',
+            'description'  => 'Ver en detalle cada servicio del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Crea un nuevo Servicio',
+            'slug' => 'services.create',
+            'description'  => 'Crear un nuevo about del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Edicion de un Servicio',
+            'slug' => 'services.edit',
+            'description'  => 'Editar cualquier dato de un Servicio del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar un Servicio',
+            'slug' => 'services.destroy',
+            'description'  => 'Eliminar cualquier dato de un Servicio del sistema',
+
+        ]);
+        //services
+
+
     }
 }
