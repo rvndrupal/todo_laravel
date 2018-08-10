@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Front;
 use App\Slider;
+use App\About;
 
 use Illuminate\Http\Request;
 
@@ -20,9 +21,13 @@ class FrontController extends Controller
         //recupera la info del slider
         $sliders=Slider::orderBy('id','asc')->take(5)->get();
 
-        //dd($sliders);
+        //Recuperar Sobre Nosotros
+        $abouts=About::orderBy('id','asc')->take(1)->get();
 
-        return view('front',compact('sliders'));
+        //dd($about);
+
+
+        return view('front',compact('sliders','abouts'));
     }
 
     /**

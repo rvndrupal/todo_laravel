@@ -163,7 +163,9 @@
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
-            <h2>About eBusiness</h2>
+              @foreach ($abouts as $about )
+            <h2>{{ $about->titulo }}</h2>
+           
           </div>
         </div>
       </div>
@@ -173,7 +175,7 @@
           <div class="well-left">
             <div class="single-well">
               <a href="#">
-								  <img src="img/about/1.jpg" alt="">
+								  <img src="{{ $about->file }}" alt="">
 								</a>
             </div>
           </div>
@@ -183,27 +185,28 @@
           <div class="well-middle">
             <div class="single-well">
               <a href="#">
-                <h4 class="sec-head">project Maintenance</h4>
+                <h4 class="sec-head">{{ $about->subtitulo }}</h4>
               </a>
               <p>
-                Redug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure aspernatur sit adipisci quaerat unde at nequeRedug Lagre dolor sit amet, consectetur adipisicing elit. Itaque quas officiis iure
+                  {{ $about->body }}
               </p>
               <ul>
                 <li>
-                  <i class="fa fa-check"></i> Interior design Package
+                  <i class="fa fa-check"></i> {{ $about->l1 }}
                 </li>
                 <li>
-                  <i class="fa fa-check"></i> Building House
+                  <i class="fa fa-check"></i> {{ $about->l2 }}
                 </li>
                 <li>
-                  <i class="fa fa-check"></i> Reparing of Residentail Roof
+                  <i class="fa fa-check"></i> {{ $about->l3 }}
                 </li>
                 <li>
-                  <i class="fa fa-check"></i> Renovaion of Commercial Office
+                  <i class="fa fa-check"></i> {{ $about->l4 }}
                 </li>
                 <li>
-                  <i class="fa fa-check"></i> Make Quality Products
+                  <i class="fa fa-check"></i> {{ $about->l5 }}
                 </li>
+                @endforeach 
               </ul>
             </div>
           </div>
