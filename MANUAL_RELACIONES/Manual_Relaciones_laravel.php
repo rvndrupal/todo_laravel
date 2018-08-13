@@ -10,7 +10,7 @@ php artisan make:migration create_post_tag_table
 
 //tomar el cuenta el orden alfabetico y estar en singular los campos
 ##########################################################################################################################
-Categories
+CATEGORY
  public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
@@ -23,14 +23,14 @@ Categories
     }
 
 #############################################################################################################################3
-Post
+POST
 public function up()
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('user_id')->unsigned(); // no acepta numeros negativos un post le pertenece a un usuario
-            $table->integer('category_id')->unsigned(); //le pertenece a una categoria
+            $table->integer('category_id')->unsigned(); //un post le pertenece a una categoria
 
             $table->string('name',128);
             $table->string('slug', 128)->unique(); //campo unico
@@ -73,7 +73,7 @@ TAGS
             $table->timestamps();
         });
     }
-####################################################################################################################################$_COOKIE
+####################################################################################################################################
 RELACIÓN MUCHOS A MUCHOS 
 
 create_post_tag_table.php
@@ -105,6 +105,114 @@ create_post_tag_table.php
 
             //una etiqueta puede tener muchos post
         });
+    }
+
+    ####################################################################################################################################
+
+    LUEGO SE LES TIENE QUE DECIR A LAS ENTIDADES (MODELOS) EL TIPO DE RELACION QUE TIENEN.
+
+    POST
+
+      //un post pertenece a un usuario 
+    public function user(){
+        return $this->belongsTo(User::class); //Un post pertence a un Usuario.
+    }
+
+    //un post pertenece a una categoria
+    public function category(){
+        return $this->belongsTo(Category::class); //Un post tiene una etiqueta
+    }
+
+    public function tags(){ // se manda a llamar en el seeder de post en la relacion
+        return $this->belongsToMany(Tag::class);  //Un post pertenece y tiene muchas etiquetas
+    }
+
+     ####################################################################################################################################
+
+     CATEGORIA 
+     class Category extends Model
+{
+    protected $fillable=[
+        'name','slug','body'
+    ];  
+
+    public function posts(){ // Una categoria puede tener muchos post
+        return $this->hasMany(Post::class);  //una categoria tiene n post
+    }
+}
+
+
+ ####################################################################################################################################
+
+ TAG 
+
+ class Tag extends Model
+{
+    protected $fillable=[
+        'name','slug'
+    ];  
+
+    public function posts(){ // Una etiqueta puede tener muchos post
+        return $this->belongsToMany(Post::class);  //pertenece y tiene muchos Post
+    }
+}
+
+
+####################################################################################################################################
+USUARIOS 
+
+ public function posts(){ // Un usuario puede tener muchos post
+        return $this->hasMany(Post::class);  //un usuario  tiene n post
+    }
+
+####################################################################################################################################
+
+PARA SACAR LOS DATOS EN EL CONTROLLADOR. 
+
+Para lo que seria el index
+
+Obtenemos los post del sistema. 
+
+ public function blog(){
+        $posts=Post::orderBy('id','DESC')->where('status','PUBLISHED')->paginate(3);
+        return view('web.posts',compact('posts'));
+}
+
+
+Obtener un solo post cuando se le da leer más. 
+
+public function post($slug)
+    {
+        $post=Post::where('slug', $slug)->first();
+
+        return view('web.post', compact('post'));
+    }
+
+Obtener las cateorias
+
+public function category($slug)
+    {
+        //obtenemos la categoria se filtran por categorias
+        $category=Category::where('slug',$slug)->pluck('id')->first();//con pluck obtienes solo el id
+
+        //ahora obtenemos los post
+        $posts=Post::where('category_id',$category)
+        ->orderBy('id','DESC')->where('status','PUBLISHED')->paginate(3);
+
+        return view('web.posts',compact('posts'));
+    }
+
+    public function tag($slug)
+    {
+      
+        //ahora obtenemos los post -> se filtran por las etiquetas
+        $posts=Post::whereHas('tags',function($query)use($slug){
+            $query->where('slug',$slug);
+            //consigue los post que tengan etiquetas siempre y cuando estas etiquetas tengan el slug que estoy utilizando
+        })
+        ->orderBy('id','DESC')->where('status','PUBLISHED')->paginate(3);
+
+        return view('web.posts',compact('posts'));
     }
 
 

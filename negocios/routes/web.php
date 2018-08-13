@@ -20,7 +20,7 @@ Route::get('/admin', function () {
 });*/
 
 Route::get('/', function () {
-    return redirect('/negocios');
+    return redirect('negocios');
 });
 
 Route::get('/negocios', 'FrontController@index');
