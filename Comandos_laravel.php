@@ -210,5 +210,22 @@ use App\Policies\PostPolicy;
    Post::class => PostPolicy::class
 /*************************************/
 
+19.-Posicionar la ruta gracias a ASSET
+
+Para dejar fija la hoja de estilos seria asi.
+
+href="{{ asset('css/estilos.css') }}"
+
+con esto te deja como base la carpeta asset en public
+
+#############################################################
+
+20.- Crear grupo de rutas. 
+
+Route::group(['prefix' => 'admin'],function(){
+
+    Route::resources();  //genera todas las rutas con el prefijo-> admin
+
+});
 
 

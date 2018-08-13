@@ -66,13 +66,14 @@
                                 @endcan
                                 </td>
                                 <td width="10px">
-                                @can('sliders.destroy')
-                                    
+                                @can('sliders.destroy')  
+                                                                  
+                              
                                 {!! Form::open(['route'=>['sliders.destroy', $slider->id],
                                 'method'=>'DELETE']) !!}
-                                <button class="btn btn-sm btn-danger">Eliminar</button>
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Estas Seguro')">Eliminar</button>
                                 
-                                {!! Form::close() !!}                               
+                                {!! Form::close() !!}  
                                     
                                 @endcan
                                 </td>

@@ -118,7 +118,9 @@ class SliderController extends Controller
      */
     public function destroy(Slider $slider)
     {
+        
         $slider->delete();
+                
         return back()->with('info','Eliminado Correctamente');
     }
 }
