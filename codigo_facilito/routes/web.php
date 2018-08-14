@@ -110,4 +110,72 @@ Route::middleware(['auth'])->group(function(){
     Route::get('categories/{category}/edit', 'CategoryController@edit')->name('categories.edit')
     ->middleware('permission:categories.edit');
 
+     //rutas articulos
+     Route::post('articles/store', 'ArticleController@store')->name('articles.store')
+     ->middleware('permission:articles.create');
+ 
+     Route::get('articles', 'ArticleController@index')->name('articles.index')
+     ->middleware('permission:articles.index');
+ 
+     Route::get('articles/create' , 'ArticleController@create')->name('articles.create')
+     ->middleware('permission:articles.create');
+ 
+     Route::put('articles/{article}', 'ArticleController@update')->name('articles.update')
+     ->middleware('permission:articles.edit');
+ 
+     Route::get('articles/{article}', 'ArticleController@show')->name('articles.show')
+     ->middleware('permission:articles.show');
+ 
+     Route::delete('articles/{article}', 'ArticleController@destroy')->name('articles.destroy')
+     ->middleware('permission:articles.destroy');
+ 
+     Route::get('articles/{article}/edit', 'ArticleController@edit')->name('articles.edit')
+     ->middleware('permission:articles.edit');
+
+
+     //rutas image
+     Route::post('images/store', 'ImageController@store')->name('images.store')
+     ->middleware('permission:images.create');
+ 
+     Route::get('images', 'ImageController@index')->name('images.index')
+     ->middleware('permission:images.index');
+ 
+     Route::get('images/create' , 'ImageController@create')->name('images.create')
+     ->middleware('permission:images.create');
+ 
+     Route::put('images/{image}', 'ImageController@update')->name('images.update')
+     ->middleware('permission:images.edit');
+ 
+     Route::get('images/{image}', 'ImageController@show')->name('images.show')
+     ->middleware('permission:images.show');
+ 
+     Route::delete('images/{image}', 'ImageController@destroy')->name('images.destroy')
+     ->middleware('permission:images.destroy');
+ 
+     Route::get('images/{image}/edit', 'ImageController@edit')->name('images.edit')
+     ->middleware('permission:images.edit');
+
+
+     //rutas tag
+     Route::post('tags/store', 'TagController@store')->name('tags.store')
+     ->middleware('permission:tags.create');
+ 
+     Route::get('tags', 'TagController@index')->name('tags.index')
+     ->middleware('permission:tags.index');
+ 
+     Route::get('tags/create' , 'TagController@create')->name('tags.create')
+     ->middleware('permission:tags.create');
+ 
+     Route::put('tags/{tag}', 'TagController@update')->name('tags.update')
+     ->middleware('permission:tags.edit');
+ 
+     Route::get('tags/{tag}', 'TagController@show')->name('tags.show')
+     ->middleware('permission:tags.show');
+ 
+     Route::delete('tags/{tag}', 'TagController@destroy')->name('tags.destroy')
+     ->middleware('permission:tags.destroy');
+ 
+     Route::get('tags/{tag}/edit', 'TagController@edit')->name('tags.edit')
+     ->middleware('permission:tags.edit');
+
 });

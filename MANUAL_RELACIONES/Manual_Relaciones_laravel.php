@@ -76,7 +76,9 @@ TAGS
 ####################################################################################################################################
 RELACIÓN MUCHOS A MUCHOS 
 
-create_post_tag_table.php
+php artisan make:migration  create_post_tag_table
+
+##################################################################################################################################
 
  public function up()
     {
@@ -106,6 +108,17 @@ create_post_tag_table.php
             //una etiqueta puede tener muchos post
         });
     }
+
+    ################################################################################################################################
+    TRUCO POR SI EL CAMPO ID NO ESTA VACIO. 
+
+    AGREGAR EL ->nullable();
+
+$table->integer('article_id')->unsigned()->nullable(); //truco para que acepte vacios
+
+$table->foreign('article_id')->references('id')->on('articles')
+->onDelete('cascade')
+->onUpdate('cascade');
 
     ####################################################################################################################################
 

@@ -42,6 +42,30 @@
                         </li>
                         @endcan
 
+                        @can('categories.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('categories.index') }}">Categorias</a>
+                        </li>
+                        @endcan
+
+                        @can('articles.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('articles.index') }}">Articulos</a>
+                        </li>
+                        @endcan
+
+                        @can('images.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('images.index') }}">Imagenes</a>
+                        </li>
+                        @endcan
+
+                        @can('tags.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('tags.index') }}">Etiquetas</a>
+                        </li>
+                        @endcan
+
                         @can('users.index')
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>

@@ -154,5 +154,119 @@ class PermissionsTableSeeder extends Seeder
         ]);
         //categorias
 
+
+         //article
+         Permission::create([
+            'name' => 'Navegar articulos',
+            'slug' => 'articles.index',
+            'description'  => 'Lista y navega todos los articulos del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalle de articulos',
+            'slug' => 'articles.show',
+            'description'  => 'Ver en detalle cada articulos del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Crea un nuevo articulo',
+            'slug' => 'articles.create',
+            'description'  => 'Crear un nuevo articulo del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Edicion de un Articulo',
+            'slug' => 'articles.edit',
+            'description'  => 'Editar cualquier dato de un articulo del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar articulos',
+            'slug' => 'articles.destroy',
+            'description'  => 'Eliminar cualquier dato de un articulo del sistema',
+
+        ]);
+        //article
+
+
+        //image
+        Permission::create([
+        'name' => 'Navegar Imagen',
+        'slug' => 'images.index',
+        'description'  => 'Lista y navega todos los Imagen del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalle de Imagen',
+            'slug' => 'images.show',
+            'description'  => 'Ver en detalle cada Imagen del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Crea un nuevo imagen',
+            'slug' => 'images.create',
+            'description'  => 'Crear un nuevo Imagen del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Edicion de un Imagen',
+            'slug' => 'images.edit',
+            'description'  => 'Editar cualquier dato de un Imagen del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar Imagen',
+            'slug' => 'images.destroy',
+            'description'  => 'Eliminar cualquier dato de un Imagen del sistema',
+
+        ]);
+        //image
+
+
+        //tag
+        Permission::create([
+            'name' => 'Navegar tag',
+            'slug' => 'tags.index',
+            'description'  => 'Lista y navega todos los tag del sistema',
+    
+            ]);
+    
+            Permission::create([
+                'name' => 'Ver detalle de tag',
+                'slug' => 'tags.show',
+                'description'  => 'Ver en detalle cada tag del sistema',
+    
+            ]);
+    
+            Permission::create([
+                'name' => 'Crea un nuevo tag',
+                'slug' => 'tags.create',
+                'description'  => 'Crear un nuevo tag del sistema',
+    
+            ]);
+    
+            Permission::create([
+                'name' => 'Edicion de un tag',
+                'slug' => 'tags.edit',
+                'description'  => 'Editar cualquier dato de un tag del sistema',
+    
+            ]);
+    
+            Permission::create([
+                'name' => 'Eliminar tag',
+                'slug' => 'tags.destroy',
+                'description'  => 'Eliminar cualquier dato de un tag del sistema',
+    
+            ]);
+            //tag
+
     }
 }
