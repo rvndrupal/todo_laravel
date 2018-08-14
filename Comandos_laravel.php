@@ -228,4 +228,116 @@ Route::group(['prefix' => 'admin'],function(){
 
 });
 
+###############################################################
+21.-MANEJO DE TINKER 
 
+php artisan tinker 
+
+Ejemplo creamos un Usuario. 
+
+>>> $user = ['name'=>'prueba','email'=>'prueba@gmail.com','password'=>bcrypt('prueba')]
+=> [
+     "name" => "prueba",
+     "email" => "prueba@gmail.com",
+     "password" => "$2y$10$6CSb3FYvBf.CWjKSmMvD2uxWKs8v.ZLeC65eEBHHcnDrHETnKmwOK",
+   ]
+>>> \App\User::create($user);
+
+## Mostrar todos los Usuarios. 
+
+ $user = \App\User::all();
+
+
+ ##$category= new App\Category();  //crea una cateoria
+
+ $category->name="Noticias";
+ $category->save();
+
+ ##para ver lo que tiene solo se pone la variable -> enter
+
+ $category -> Enter
+
+
+ ##Consultas  
+ php artisan tinker                                       
+sy Shell v0.9.6 (PHP 7.1.14 — cli) by Justin Hileman      
+>> $article=App\Article::find(1);                         
+> App\Article {#2924                                      
+    id: 1,                                                
+    title: "Nueva Noticia",                               
+    content: "Nuevo contenido de la Noticia",             
+    user_id: 4,                                           
+    category_id: 6,                                       
+    created_at: "2018-08-14 20:00:21",                    
+    updated_at: "2018-08-14 20:00:21",                    
+  }                                                       
+>> $article->category                                     
+> App\Category {#2931                                     
+    id: 6,                                                
+    name: "Noticias",                                     
+    created_at: "2018-08-14 19:52:19",                    
+    updated_at: "2018-08-14 19:52:19",                    
+  }                                                       
+>> $article                                               
+> App\Article {#2924                                      
+    id: 1,                                                
+    title: "Nueva Noticia",                               
+    content: "Nuevo contenido de la Noticia",             
+    user_id: 4,                                           
+    category_id: 6,                                       
+    created_at: "2018-08-14 20:00:21",                    
+    updated_at: "2018-08-14 20:00:21",                    
+    category: App\Category {#2931                         
+      id: 6,                                              
+      name: "Noticias",                                   
+      created_at: "2018-08-14 19:52:19",                  
+      updated_at: "2018-08-14 19:52:19",                  
+    },                                                    
+  }                                                       
+>>       
+
+
+ $article->user
+=> App\User {#2934
+     id: 4,
+     name: "rodrigo",
+     email: "rodrigodrupal1@gmail.com",
+     created_at: "2018-08-14 17:15:14",
+     updated_at: "2018-08-14 17:15:14",
+   }
+>>> $article
+=> App\Article {#2924
+     id: 1,
+     title: "Nueva Noticia",
+     content: "Nuevo contenido de la Noticia",
+     user_id: 4,
+     category_id: 6,
+     created_at: "2018-08-14 20:00:21",
+     updated_at: "2018-08-14 20:00:21",
+     category: App\Category {#2931
+       id: 6,
+       name: "Noticias",
+       created_at: "2018-08-14 19:52:19",
+       updated_at: "2018-08-14 19:52:19",
+     },
+     user: App\User {#2934
+       id: 4,
+       name: "rodrigo",
+       email: "rodrigodrupal1@gmail.com",
+       created_at: "2018-08-14 17:15:14",
+       updated_at: "2018-08-14 17:15:14",
+     },
+   }
+
+
+   ############# MUY IMPORTANTE MUCHO A MUCHOS###################
+
+    $articles->tags()->attach(1)  //SE LE PASA EL ID DEL TAG QUE SE QUIERE RELACIONAR
+
+
+
+
+ ############################################################################
+ 22.- Donde estan todas las funciones de busqueda. 
+
+ https://laravel.com/docs/5.6/eloquent-collections
