@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Category;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\CategoryStoreRequest;
+
 class CategoryController extends Controller
 {
     /**
@@ -12,9 +14,14 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $name=$request->get('name');
+        $categories=Category::orderBy('id','ASC')
+        ->name($name)
+        ->paginate(5);
+
+        return view('categories.index', compact('categories'));
     }
 
     /**
@@ -24,7 +31,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -33,9 +40,12 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategoryStoreRequest $request)
     {
-        //
+        $category=Category::create($request->all());
+
+        return redirect()->route('categories.index', $category->id)
+        ->with('info','Categoria guardada con exito');
     }
 
     /**
@@ -46,7 +56,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        return view('categories.show', compact('category'));
     }
 
     /**
@@ -57,7 +67,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit', compact('category'));
     }
 
     /**
@@ -69,7 +79,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update($request->all());
+
+        return redirect()->route('categories.index', $category->id)
+        ->with('info','Categoria actualizada con exito');
     }
 
     /**
@@ -80,6 +93,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+                
+        return back()->with('info','Eliminado Correctamente');
     }
 }

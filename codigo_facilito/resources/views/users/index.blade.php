@@ -15,7 +15,7 @@
                         <thead>
                             <tr>
                                 <th width="10px">ID</th>
-                                <th>Nombre</th>
+                                <th>Nombre</th>                              
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                         </thead>
@@ -24,7 +24,8 @@
                             @foreach ($users as $user )
                             <tr>
                                 <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->name }}</td>                               
+                               
                                 <td width="10px">
                                 @can('users.show')
                                     <a href="{{ route('users.show', $user->id) }}" class="btn btn-sm btn-default">Ver</a>
@@ -40,7 +41,7 @@
                                     
                                 {!! Form::open(['route'=>['users.destroy', $user->id],
                                 'method'=>'DELETE']) !!}
-                                <button class="btn btn-sm btn-danger">Eliminar</button>
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Estas Seguro')">Eliminar</button>
                                 
                                 {!! Form::close() !!}                               
                                     
