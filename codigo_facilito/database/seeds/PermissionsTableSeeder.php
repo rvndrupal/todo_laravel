@@ -116,5 +116,43 @@ class PermissionsTableSeeder extends Seeder
         ]);
         //Products
 
+
+        //categorias
+        Permission::create([
+            'name' => 'Navegar categorias',
+            'slug' => 'categories.index',
+            'description'  => 'Lista y navega todos los categorias del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Ver detalle de categories',
+            'slug' => 'categories.show',
+            'description'  => 'Ver en detalle cada categorias del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Crea un nuevo categorias',
+            'slug' => 'categories.create',
+            'description'  => 'Crear un nuevo categorias del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Edicion de categories',
+            'slug' => 'categories.edit',
+            'description'  => 'Editar cualquier dato de un categorias del sistema',
+
+        ]);
+
+        Permission::create([
+            'name' => 'Eliminar categorias',
+            'slug' => 'categories.destroy',
+            'description'  => 'Eliminar cualquier dato de un categorias del sistema',
+
+        ]);
+        //categorias
+
     }
 }

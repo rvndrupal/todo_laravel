@@ -20,5 +20,12 @@ class UsersTableSeeder extends Seeder
             'slug'  => 'admin',
             'special' => 'all-access'
         ]);
+
+        App\User::create([
+            'name'=>'rodrigo',
+            'email'=>'rodrigodrupal1@gmail.com',
+            'password'=>bcrypt('rorro13')
+
+        ]);
     }
 }

@@ -13,12 +13,19 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 20)->create();
+        factory(App\User::class, 3)->create();
 
         Role::create([
             'name'  => 'Admin',
             'slug'  => 'admin',
             'special' => 'all-access'
+        ]);
+
+        App\User::create([
+            'name'=>'rodrigo',
+            'email'=>'rodrigodrupal1@gmail.com',
+            'password'=>bcrypt('rorro13')
+
         ]);
     }
 }
