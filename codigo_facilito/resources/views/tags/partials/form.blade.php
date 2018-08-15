@@ -1,5 +1,5 @@
 <div class="from-group">    
-    {!! Form::label('name','Categoría') !!}
+    {!! Form::label('name','Etiqueta') !!}
     
     {!! Form::text('name', null, ['class' => 'form-control']) !!}   
     
@@ -11,3 +11,5 @@
     {!! Form::submit('Guardar', ['class' => 'btn btn-sm btn-primary']) !!}   
     
 </div>
+
+

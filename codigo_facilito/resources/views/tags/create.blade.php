@@ -6,14 +6,14 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                   Nueva Categoría
+                   Nuevo Etiqueta
                 </div>
 
                 <div class="panel-body">
                 
-                {!! Form::open(['route'=> 'categories.store']) !!}
+                {!! Form::open(['route'=> 'tags.store']) !!}
 
-                @include('categories.partials.form')
+                @include('tags.partials.form')
                 
                 {!! Form::close() !!}
                 

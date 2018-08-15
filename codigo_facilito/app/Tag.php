@@ -10,6 +10,13 @@ class Tag extends Model
         'name',
     ];
 
+    public function scopeName($query, $name)
+    {
+        if ($name) {
+            return $query->where('name', 'LIKE', "%$name%");
+        }
+    }
+
     public function articles()//Relacion muchos a muchos Un tag puede tener muchos articulos
     {
        // return $this->belongsToMany('App\Article');

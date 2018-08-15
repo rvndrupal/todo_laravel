@@ -6,14 +6,18 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                   Tag
-                   @can('tags.index')
-                   <a href="{{ route('tags.index') }}" class="btn btn-sm btn-primary pull-right">Volver</a>
-                   @endcan
+                   Nuevo Artículo
                 </div>
 
                 <div class="panel-body">
-                <p> <strong>Nombre</strong> {{ $tag->name }}</p>               
+                
+                {!! Form::open(['route'=> 'articles.store','files'=>true]) !!}
+
+                @include('articles.partials.form')
+                
+                {!! Form::close() !!}
+                
+                
                 </div>
             </div>
         </div>

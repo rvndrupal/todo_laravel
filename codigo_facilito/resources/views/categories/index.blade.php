@@ -59,7 +59,7 @@
                                     
                                 {!! Form::open(['route'=>['categories.destroy', $categorie->id],
                                 'method'=>'DELETE']) !!}
-                                <button class="btn btn-sm btn-danger">Eliminar</button>
+                                <button class="btn btn-sm btn-danger" onclick="return confirm('Estas Seguro')">Eliminar</button>
                                 
                                 {!! Form::close() !!}                               
                                     

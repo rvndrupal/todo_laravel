@@ -10,6 +10,13 @@ class Article extends Model
         'title','content','user_id','category_id',
     ];
 
+    public function scopeTitle($query, $title)
+    {
+        if ($title) {
+            return $query->where('title', 'LIKE', "%$title%");
+        }
+    }
+
     public function category() //un articulo solo pertenece a una categoria
     {
         return $this->belongsTo('App\Category');

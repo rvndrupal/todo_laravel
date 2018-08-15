@@ -6,10 +6,10 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="page-header">
-                        Busqueda de Etiqueta
-                        {{ Form::open(['route'=>'tags.index', 'method'=>'GET','class'=>'form-inline pull-right']) }}
+                        Busqueda de Artículos
+                        {{ Form::open(['route'=>'articles.index', 'method'=>'GET','class'=>'form-inline pull-right']) }}
                         <div class="form-group">
-                            {{ Form::text('name',null,['class'=>'form-control','placeholder'=>'Nombre']) }}
+                            {{ Form::text('name',null,['class'=>'form-control','placeholder'=>'Título']) }}
                         </div>    
                        
                         <div class="form-group">
@@ -25,8 +25,8 @@
                 <div class="panel-heading">
                   Etiqueta
                    
-                    @can('tags.create')
-                    <a href="{{ route('tags.create') }}" class="btn btn-sm btn-primary pull-right">Nuevo</a>
+                    @can('articles.create')
+                    <a href="{{ route('articles.create') }}" class="btn btn-sm btn-primary pull-right">Nuevo</a>
                     @endcan
                    
                 </div>
@@ -36,30 +36,32 @@
                         <thead>
                             <tr>
                                 <th width="10px">ID</th>
-                                <th>Nombre</th>
+                                <th>Título</th>
+                                <th>Contenido</th>
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            @foreach ($tags as $tag )
+                            @foreach ($articles as $article )
                             <tr>
-                                <td>{{ $tag->id }}</td>
-                                <td>{{ $tag->name }}</td>
+                                <td>{{ $article->id }}</td>
+                                <td>{{ $article->title }}</td>
+                                <td>{{ $article->content }}</td>
                                 <td width="10px">
-                                @can('tags.show')
-                                    <a href="{{ route('tags.show', $tag->id) }}" class="btn btn-sm btn-default">Ver</a>
+                                @can('articles.show')
+                                    <a href="{{ route('articles.show', $article->id) }}" class="btn btn-sm btn-default">Ver</a>
                                 @endcan
                                 </td>
                                 <td width="10px">
-                                @can('tags.edit')
-                                    <a href="{{ route('tags.edit', $tag->id) }}" class="btn btn-sm btn-default">Editar</a>
+                                @can('articles.edit')
+                                    <a href="{{ route('articles.edit', $article->id) }}" class="btn btn-sm btn-default">Editar</a>
                                 @endcan
                                 </td>
                                 <td width="10px">
-                                @can('tags.destroy')
+                                @can('articles.destroy')
                                     
-                                {!! Form::open(['route'=>['tags.destroy', $tag->id],
+                                {!! Form::open(['route'=>['articles.destroy', $article->id],
                                 'method'=>'DELETE']) !!}
                                 <button class="btn btn-sm btn-danger" onclick="return confirm('Estas Seguro')">Eliminar</button>
                                 
@@ -74,7 +76,7 @@
                         </tbody>
                     </table>
 
-                    {{ $tags->render() }}
+                    {{ $articles->render() }}
                    
                 </div>
             </div>
