@@ -9,7 +9,7 @@
                         Busqueda de Artículos
                         {{ Form::open(['route'=>'articles.index', 'method'=>'GET','class'=>'form-inline pull-right']) }}
                         <div class="form-group">
-                            {{ Form::text('name',null,['class'=>'form-control','placeholder'=>'Título']) }}
+                            {{ Form::text('title',null,['class'=>'form-control','placeholder'=>'Título']) }}
                         </div>    
                        
                         <div class="form-group">
@@ -37,17 +37,28 @@
                             <tr>
                                 <th width="10px">ID</th>
                                 <th>Título</th>
-                                <th>Contenido</th>
+                                <th>Categoría</th>
+                                <th>User</th>
+                                <th>Imagen</th>
+                                
                                 <th colspan="3">&nbsp;</th>
                             </tr>
                         </thead>
-
+                          
                         <tbody>
                             @foreach ($articles as $article )
                             <tr>
                                 <td>{{ $article->id }}</td>
                                 <td>{{ $article->title }}</td>
-                                <td>{{ $article->content }}</td>
+                                <td>{{   $article->category->name }}</td>
+                                <td>{{   $article->user->name }}</td>
+                                <td>
+                                
+                                @foreach ($article->images as $image )                               
+                                <img src="{{ asset('images/articles').'/'.$image->name }}" class="imagen_index" /></p>
+                                @endforeach
+                                </td>
+                               
                                 <td width="10px">
                                 @can('articles.show')
                                     <a href="{{ route('articles.show', $article->id) }}" class="btn btn-sm btn-default">Ver</a>

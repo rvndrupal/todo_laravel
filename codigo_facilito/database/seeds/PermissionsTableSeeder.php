@@ -192,12 +192,12 @@ class PermissionsTableSeeder extends Seeder
         ]);
         //article
 
-
-        //image
+        
+        //imagen
         Permission::create([
-        'name' => 'Navegar Imagen',
-        'slug' => 'images.index',
-        'description'  => 'Lista y navega todos los Imagen del sistema',
+            'name' => 'Navegar Imagen',
+            'slug' => 'images.index',
+            'description'  => 'Lista y navega todos los Imagen del sistema',
 
         ]);
 
@@ -209,7 +209,7 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name' => 'Crea un nuevo imagen',
+            'name' => 'Crea un nuevo Imagen',
             'slug' => 'images.create',
             'description'  => 'Crear un nuevo Imagen del sistema',
 
@@ -228,7 +228,11 @@ class PermissionsTableSeeder extends Seeder
             'description'  => 'Eliminar cualquier dato de un Imagen del sistema',
 
         ]);
-        //image
+        //imagen
+
+
+
+       
 
 
         //tag

@@ -18,10 +18,22 @@ class ArticleController extends Controller
      */
     public function index(Request $request)
     {
-        $title=$request->get('title');
-        $articles=Article::orderBy('id','ASC')
-        ->title($title)
-        ->paginate(5);
+       $title=$request->get('title');
+       $articles=Article::orderBy('id','DES')
+       ->title($title)
+       ->paginate(6);
+       
+        //mando a llamar a las relaciones
+        $articles->each(function($articles){
+            $articles->category;
+            $articles->user;
+            $articles->images;
+        });
+
+       
+
+       // dd($articles);
+       
 
         return view('articles.index', compact('articles'));
     }
@@ -60,6 +72,8 @@ class ArticleController extends Controller
             $file->move($path,$name);
         }
 
+        
+
         $article=new Article($request->all());
         //se necesita el id del Cliente      
         $article->user_id= \Auth::user()->id;  //te da el id del usuario actual
@@ -86,14 +100,10 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        $cliente=Cliente::create($request->all());
+        //$image=Image::orderBy('id','ASC')->get();
 
-        if($request->file('file')){ //si se manda el archivo
-            $path=Storage::disk('public')->put('image', $request->file('file'));
-            //utiliza la funcion de guardar en public crea la carpeta image y pasa el archivo
-            $cliente->fill(['file' => asset($path)])->save(); //actualizame la ruta en el post
-            //el asset toma toda la ruta y se genera correctamente toda la ruta
-        }
+        $article->images;  //para poder mostrar la imagen     
+        return view('articles.show', compact('article'));       
     }
 
     /**
@@ -104,7 +114,12 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        //
+
+        $categories=Category::orderBy('name','ASC')->pluck('name','id');//paso solo el nombre y el id
+        //traigo todas las categorias y pasas el valor del id
+        $tags=Tag::orderBy('name','ASC')->pluck('name','id');
+
+        return view('articles.edit', compact('article','categories','tags'));
     }
 
     /**
@@ -116,7 +131,41 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article)
     {
-        //
+        $article->update($request->all());
+        
+        //traemos la imagen
+        
+        $article->images;
+        //dd($article);
+        
+        /*
+        foreach ($article->images->all() as $image) {
+            $name=$image->name;
+            //dd($name);
+        }*/
+        
+       
+       if($request->image){ //si se manda el archivo        
+        $file=$request->file('image');
+        //dd($file);
+        $name='articulo_'. time().'.'.$file->getClientOriginalExtension();//se crea una imagen individual por tiempo
+        $path=public_path().'/images/articles'; //te manda a la carpeta public y crea una nueva acrpeta
+        $file->move($path,$name);
+         }
+        
+         
+
+            $image=new Image(); //se inicia el modelo imagen para guardar en la tabla imagen
+            $image->name=$name;
+            $image->article()->associate($article); //asocia la imagen al articulo muy importante
+            $image->save();
+        
+
+
+        $article->tags()->sync($request->tags); //guarda el articulo y los tags en la tabla pivote super importante
+
+        return redirect()->route('articles.index', $article->id)
+        ->with('info','Artículo Actualizado  con exito');
     }
 
     /**
@@ -127,6 +176,7 @@ class ArticleController extends Controller
      */
     public function destroy(Article $article)
     {
-        //
+        $article->delete();
+        return back()->with('info','Eliminado Correctamente');
     }
 }

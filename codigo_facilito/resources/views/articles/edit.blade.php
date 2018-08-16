@@ -6,15 +6,15 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                   Editar Etiqueta
+                   Editar Artículo
                 </div>
 
                 <div class="panel-body">
                 
-                {!! Form::model($tag, ['route'=> ['tags.update', $tag->id],
-                 'method'=>'PUT']) !!}
+                {!! Form::model($article, ['route'=> ['articles.update', $article->id],
+                 'method'=>'PUT','files'=>true]) !!}
 
-                @include('tags.partials.form')
+                @include('articles.partials.form')
                 
                 {!! Form::close() !!}
                 

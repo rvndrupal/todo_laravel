@@ -15,12 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Se crean las rutas del sistema
 //MUY IMPORTANTE AGREGAR EL MIDDLAWERE AL ARCHIVO kERNEL.PHP
+
+//blog de la imagenes
+Route::get('blog/imagenes', 'ImageController@index')->name('blog.index');
 
 Route::middleware(['auth'])->group(function(){
 
@@ -133,27 +137,31 @@ Route::middleware(['auth'])->group(function(){
      ->middleware('permission:articles.edit');
 
 
-     //rutas image
-     Route::post('images/store', 'ImageController@store')->name('images.store')
-     ->middleware('permission:images.create');
+      //rutas Imagenes
+      /*
+      Route::post('images/store', 'ImageController@store')->name('images.store')
+      ->middleware('permission:images.create');
+  
+      Route::get('images', 'ImageController@index')->name('images.index')
+      ->middleware('permission:images.index');
+  
+      Route::get('images/create' , 'ImageController@create')->name('images.create')
+      ->middleware('permission:images.create');
+  
+      Route::put('images/{image}', 'ImageController@update')->name('images.update')
+      ->middleware('permission:images.edit');
+  
+      Route::get('images/{image}', 'ImageController@show')->name('images.show')
+      ->middleware('permission:images.show');
+  
+      Route::delete('images/{image}', 'ImageController@destroy')->name('images.destroy')
+      ->middleware('permission:images.destroy');
+  
+      Route::get('images/{image}/edit', 'ImageController@edit')->name('images.edit')
+      ->middleware('permission:images.edit');
  
-     Route::get('images', 'ImageController@index')->name('images.index')
-     ->middleware('permission:images.index');
- 
-     Route::get('images/create' , 'ImageController@create')->name('images.create')
-     ->middleware('permission:images.create');
- 
-     Route::put('images/{image}', 'ImageController@update')->name('images.update')
-     ->middleware('permission:images.edit');
- 
-     Route::get('images/{image}', 'ImageController@show')->name('images.show')
-     ->middleware('permission:images.show');
- 
-     Route::delete('images/{image}', 'ImageController@destroy')->name('images.destroy')
-     ->middleware('permission:images.destroy');
- 
-     Route::get('images/{image}/edit', 'ImageController@edit')->name('images.edit')
-     ->middleware('permission:images.edit');
+    */
+    
 
 
      //rutas tag

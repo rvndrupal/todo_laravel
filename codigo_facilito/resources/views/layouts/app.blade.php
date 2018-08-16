@@ -12,6 +12,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/chosen/chosen.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
+    <link href="node_modules/trumbowyg/dist/ui/trumbowyg.min.css">
+    <link href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.min.css') }}" rel="stylesheet">
+   
 </head>
 <body>
     <div id="app">
@@ -54,11 +59,13 @@
                         </li>
                         @endcan
 
-                        @can('images.index')
+                       {{-- -blog imagenes --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('images.index') }}">Imagenes</a>
+                            <a class="nav-link" href="{{ route('blog.index') }}">Imagenes</a>
                         </li>
-                        @endcan
+                        
+
+                       
 
                         @can('tags.index')
                         <li class="nav-item">
@@ -154,5 +161,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{{ asset('plugins/chosen/chosen.jquery.js') }}"></script>
+    <script src="{{ asset('plugins/trumbowyg/dist/trumbowyg.js') }}"></script>
+
+        @yield('js')
 </body>
 </html>

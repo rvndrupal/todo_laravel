@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Image;
 use Illuminate\Http\Request;
 
+
 class ImageController extends Controller
 {
     /**
@@ -14,7 +15,10 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images=Image::orderBy('id','DES')->get();
+
+        return view('images.index',compact('images'));
+        
     }
 
     /**

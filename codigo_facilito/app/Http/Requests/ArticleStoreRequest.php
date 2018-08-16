@@ -26,7 +26,10 @@ class ArticleStoreRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'content' => 'required',
+            'content' => 'min:10|required',
+            'category_id' =>'required',
+            'image' => 'image|required',
+
         ];
     }
 }
