@@ -13,8 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('plugins/chosen/chosen.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
-    <link href="node_modules/trumbowyg/dist/ui/trumbowyg.min.css">
+    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">   
     <link href="{{ asset('plugins/trumbowyg/dist/ui/trumbowyg.min.css') }}" rel="stylesheet">
    
 </head>

@@ -16,16 +16,16 @@ class ImageController extends Controller
      */
     public function index()
     {
-        $images=Image::orderBy('id','DES')->get();
+    
+        $articles=Article::orderBy('id','DES')->paginate(6);
 
-        //llamamos a la relación de los articulos
-        $images->each(function($images){
-            $images->article;
+        $articles->each(function($articles){
+            $articles->category;  //nomres de las relaciones
+            $articles->images;
         });
+       
 
-        //dd($images);
-
-        return view('images.index',compact('images'));
+        return view('images.index',compact('articles'));
         
     }
 

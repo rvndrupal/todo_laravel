@@ -15,6 +15,7 @@
 
     <!-- Custom styles for this template -->
     <link href="album.css" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   </head>
 
   <body>
@@ -68,18 +69,22 @@
             <div class="container">
     
               <div class="row">          
-                @foreach ($images as $image )                   
+                @foreach ($articles as $article )                   
                
                 <div class="col-md-4">
                   <div class="card mb-4 shadow-sm">
-                   
-                    <img src="{{ asset('images/articles').'/'.$image->name }}" class="card-img-top" /></p>
+                    @foreach ($article->images as $image )
+                    <img src="{{ asset('images/articles').'/'.$image->name }}" class="card-img-top" /></p>                        
+                    @endforeach
                     <div class="card-body">
-                      <p class="card-text">{{ $image->article->title }}</p>
+                      <p class="card-text">{{ $article->title }}</p>
                       <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                       
+                        <p class="card-text"><strong>Categoría: {{ $article->category->name }}</strong></p>
+                                               
+                          {{--  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                          <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>  --}}
                         </div>
                         <small class="text-muted">9 mins</small>
                       </div>
@@ -87,6 +92,7 @@
                   </div>
                 </div>
                 @endforeach
+                {{ $articles->render() }}
               </div>
             </div>
         </div>
