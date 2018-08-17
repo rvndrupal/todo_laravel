@@ -16,6 +16,7 @@
     <!-- Custom styles for this template -->
     <link href="album.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
   </head>
 
   <body>
@@ -65,14 +66,18 @@
         </div>
       </section>
 
+      <div class="container">
+          @include('images.partials.cat_tag');
+      </div>
+
       <div class="album py-5 bg-light">
             <div class="container">
     
               <div class="row">          
                 @foreach ($articles as $article )                   
                
-                <div class="col-md-4">
-                  <div class="card mb-4 shadow-sm">
+                <div class="col-md-3">
+                  <div class="card mb-3 shadow-sm">
                     @foreach ($article->images as $image )
                     <img src="{{ asset('images/articles').'/'.$image->name }}" class="card-img-top" /></p>                        
                     @endforeach
@@ -86,14 +91,15 @@
                           {{--  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                           <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>  --}}
                         </div>
-                        <small class="text-muted">9 mins</small>
+                        <small class="text-muted">{{ $article->created_at->diffForHumans() }}</small>
                       </div>
                     </div>
                   </div>
                 </div>
                 @endforeach
-                {{ $articles->render() }}
+               
               </div>
+              {{ $articles->render() }}
             </div>
         </div>
      

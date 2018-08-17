@@ -8,3 +8,23 @@
     width: 70px;
     height: 50px;
 }
+
+.ticat {
+    background: red;
+    color: white;
+    width: 239px;
+    text-align: center;
+    font-size: 19px;
+    border-radius: 9px;
+    padding: 3px;
+}
+
+.titag {
+    background: green;
+    color: white;
+    width: 239px;
+    text-align: center;
+    font-size: 19px;
+    border-radius: 9px;
+    padding: 3px;
+}

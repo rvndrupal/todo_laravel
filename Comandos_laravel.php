@@ -341,3 +341,14 @@ sy Shell v0.9.6 (PHP 7.1.14 — cli) by Justin Hileman
  22.- Donde estan todas las funciones de busqueda. 
 
  https://laravel.com/docs/5.6/eloquent-collections
+
+
+ ###########################################################################
+
+ 23.-Crear un Service Provider sirve para crear el View.console
+
+ Información en el video 35 de Codigo facilito
+
+ php artisan make:provider  ComposerServisProvider
+
+ Generar los archivos-> composer dump-autoload
