@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Image;
 use Illuminate\Http\Request;
+use App\Article;
 
 
 class ImageController extends Controller
@@ -16,6 +17,13 @@ class ImageController extends Controller
     public function index()
     {
         $images=Image::orderBy('id','DES')->get();
+
+        //llamamos a la relación de los articulos
+        $images->each(function($images){
+            $images->article;
+        });
+
+        //dd($images);
 
         return view('images.index',compact('images'));
         
