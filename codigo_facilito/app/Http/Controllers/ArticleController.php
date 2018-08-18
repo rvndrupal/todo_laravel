@@ -144,7 +144,7 @@ class ArticleController extends Controller
             //dd($name);
         }*/
         
-       
+       /*
        if($request->image){ //si se manda el archivo        
         $file=$request->file('image');
         //dd($file);
@@ -158,7 +158,7 @@ class ArticleController extends Controller
             $image=new Image(); //se inicia el modelo imagen para guardar en la tabla imagen
             $image->name=$name;
             $image->article()->associate($article); //asocia la imagen al articulo muy importante
-            $image->save();
+            $image->save();*/
         
 
 

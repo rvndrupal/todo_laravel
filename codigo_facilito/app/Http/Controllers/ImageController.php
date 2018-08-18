@@ -6,6 +6,9 @@ use App\Image;
 use Illuminate\Http\Request;
 use App\Article;
 
+use App\Category;
+use App\Tag;
+
 
 class ImageController extends Controller
 {
@@ -22,76 +25,55 @@ class ImageController extends Controller
         $articles->each(function($articles){
             $articles->category;  //nomres de las relaciones
             $articles->images;
+            $articles->tags;
         });
+
+        //dd($articles);
        
 
         return view('images.index',compact('articles'));
         
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function buscarCat($name){
+        
+        $categorie=Category::BuscarCat($name)->first();  //busqued por medio del scop creado en el modelo
+        //traigo una categoria
+
+        $articles=$categorie->articles()->paginate(6);   //creo la relacion 
+        $articles->each(function($articles){
+            $articles->category;  //nombres de las relaciones
+            $articles->images;
+        });
+
+        return view('images.index',compact('articles'));
+
+        //dd($articles);
+
+        //dd($categorie);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
+    public function buscarTag($name){
+        
+        $tag=Tag::BuscarTag($name)->first();  //busqued por medio del scop creado en el modelo
+        //traigo una categoria
+
+        //dd($tag);
+
+        $articles=$tag->articles()->paginate(6);   //creo la relacion 
+        $articles->each(function($articles){
+            $articles->category;  //nombres de las relaciones
+            $articles->images;
+        });
+
+        return view('images.index',compact('articles'));
+
+        //dd($articles);
+
+        //dd($categorie);
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Image $image)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Image $image)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Image $image)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Image  $image
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Image $image)
-    {
-        //
-    }
 }

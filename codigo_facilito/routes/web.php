@@ -26,6 +26,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 //blog de la imagenes
 Route::get('blog/imagenes', 'ImageController@index')->name('blog.index');
 
+Route::get('categorie_detalle/{name}','ImageController@buscarCat')->name('detalle.category');
+
+Route::get('tag_detalle/{name}','ImageController@buscarTag')->name('detalle.tag');
+
+
+
+
+
+//permisos y roles
+
 Route::middleware(['auth'])->group(function(){
 
     //rutas roles

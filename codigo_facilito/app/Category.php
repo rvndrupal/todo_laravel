@@ -18,6 +18,13 @@ class Category extends Model
         }
     }
 
+    public function scopeBuscarCat($query, $name)
+    {
+        if ($name) {
+            return $query->where('name', '=', $name);
+        }
+    }
+
     public function articles() //una categoria puede tener muchos articulos
     {
         return $this->hasMany('App\Article');

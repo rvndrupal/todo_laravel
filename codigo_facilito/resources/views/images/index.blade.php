@@ -76,8 +76,8 @@
               <div class="row">          
                 @foreach ($articles as $article )                   
                
-                <div class="col-md-3">
-                  <div class="card mb-3 shadow-sm">
+                <div class="col-md-4">
+                  <div class="card mb-4 shadow-sm">
                     @foreach ($article->images as $image )
                     <img src="{{ asset('images/articles').'/'.$image->name }}" class="card-img-top" /></p>                        
                     @endforeach
@@ -87,6 +87,21 @@
                         <div class="btn-group">
                        
                         <p class="card-text"><strong>Categoría: {{ $article->category->name }}</strong></p>
+                        <p class="card-text"><strong>Etíquetas:</strong></p>
+                        @foreach ($article->tags as $tag )
+                            
+                          @if($article->tags->count()>1)
+
+                            {{ $tag->name.', ' }}
+
+                          @else 
+
+                          {{ $tag->name }}
+
+
+                          @endif
+
+                        @endforeach
                                                
                           {{--  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                           <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>  --}}

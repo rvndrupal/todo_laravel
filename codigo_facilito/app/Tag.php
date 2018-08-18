@@ -17,6 +17,16 @@ class Tag extends Model
         }
     }
 
+
+    public function scopeBuscarTag($query, $name)
+    {
+        if ($name) {
+            return $query->where('name', '=', $name);
+        }
+    }
+
+
+
     public function articles()//Relacion muchos a muchos Un tag puede tener muchos articulos
     {
        // return $this->belongsToMany('App\Article');

@@ -16,7 +16,7 @@ class ComposerServisProvider extends ServiceProvider
     {
         //aqui se carga toda la información que se encarga de Enviar la Info a la Vista
         //se le pasa para las dos vistas o mas que necesites
-        View::composer(['images.index'],'App\Http\ViewComposers\CatTagComposer');
+       View::composer(['images.index'],'App\Http\ViewComposers\CatTagComposer');
     }
 
     /**
