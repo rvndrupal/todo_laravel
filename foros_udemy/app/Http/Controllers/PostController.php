@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Forum;
+use App\Post;
 use Illuminate\Http\Request;
 
-class ForumsController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class ForumsController extends Controller
      */
     public function index()
     {
-        $forums=Forum::latest()->paginate(2);
-
-        return view('forums.index', compact('forums'));
+        //
     }
 
     /**
@@ -43,24 +41,21 @@ class ForumsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Forum  $forum
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Forum $forum)
+    public function show(Post $post)
     {
-        $posts=$forum->posts()->with(['owner'])->paginate(2); 
-        //un foro tiene relacion con post y post a su vez tiene relacion con user que es owner
-
-        return view('forums.detail',compact('forum','posts'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Forum  $forum
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Forum $forum)
+    public function edit(Post $post)
     {
         //
     }
@@ -69,10 +64,10 @@ class ForumsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Forum  $forum
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Forum $forum)
+    public function update(Request $request, Post $post)
     {
         //
     }
@@ -80,10 +75,10 @@ class ForumsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Forum  $forum
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Forum $forum)
+    public function destroy(Post $post)
     {
         //
     }
