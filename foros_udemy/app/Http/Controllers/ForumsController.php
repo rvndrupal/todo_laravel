@@ -14,7 +14,7 @@ class ForumsController extends Controller
      */
     public function index()
     {
-        $forums=Forum::latest()->paginate(2);
+        $forums=Forum::with(['posts'])->paginate(3); //con el with se reducen el nuemro de consultas brutalmente
 
         return view('forums.index', compact('forums'));
     }
