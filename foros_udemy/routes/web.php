@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
+
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+
+
+//password
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', 'ForumsController@index')->name('home');
