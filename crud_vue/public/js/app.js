@@ -12605,25 +12605,23 @@ return /******/ (function(modules) { // webpackBootstrap
 });
 ;
 //# sourceMappingURL=axios.map
+new Vue({
+    el: '#crud',
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+    created: function() {
+        this.getKeeps();
+    },
 
-require('./bootstrap');
+    data: {
+        Keeps: []
+    },
 
-window.Vue = require('vue');
-
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-const app = new Vue({
-    el: '#app'
+    methods: {
+        getKeeps: function() {
+            var urlKeeps = 'task'; //seria para la ruta del index
+            axios.get(urlKeeps).then(response => {
+                this.Keeps = reponse.data
+            });
+        }
+    }
 });
