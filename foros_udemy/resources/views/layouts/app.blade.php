@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/estilos.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -72,6 +73,14 @@
         </nav>
         
         <div class="container">
+
+            @if(session('message'))
+
+                <div class="alert alert-{{ session('message')[0] }}">
+                    {{ session('message')[1] }}
+                </div>
+
+            @endif
         
         @yield('content')
 

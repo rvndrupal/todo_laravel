@@ -8,10 +8,12 @@
 
             @forelse($forums as $forum )
             <div class="panel panel-default">
-                <div class="panel-heading">
-                   <a href="{{ route('show',$forum->id)}}"> {{ $forum->name }}</a>
+                <div class="panel-heading panel-heading-forum">
+                   <a href="{{ route('show.forum',$forum->id)}}"> {{ $forum->name }}</a>
                    <span class="pull-right">
-                        {{ __('Post') }}: {{ $forum->posts->count() }}
+                        {{ __('Post') }}: {{ $forum->posts->count() }} {{ "-->" }}
+                       {{ __('Respuestas') }}: {{ $forum->replies->count() }}
+                       
                     </span>
                 </div>
 
@@ -34,6 +36,30 @@
             
             @endif
 
+            {{-- formulario --}}
+                <form action="{{ route('store.forum') }}" method="POST">
+                {{--  para que aparescan los campos automaticos-->> b4-form-textarea  --}}
+                {{ csrf_field() }} {{-- Token de Seguridad --}}
+                <div class="form-group">
+                  <label for="name" class="col-lg-12 control-label"> {{ __('Nombre') }}</label>
+                  <input type="text" class="form-control" name="name" id="name"  placeholder="Nombre" value="{{ old('name') }}">                
+                </div>
+
+                <div class="form-group">
+                <label for="description" class="col-lg-12 control-label"> {{ __('Descripcción') }}</label>
+                <input type="text" class="form-control" name="description" id="description"  placeholder="Nombre" value="{{ old('description') }}">                
+                </div>
+
+                <button type="submit" name="addForum" class="btn btn-primary">
+                    {{ __('Crear Foro') }}
+                </button>
+                    
+
+
+                
+                </form>
+
+            {{-- formulario --}}
         </div>       
 
     </div>

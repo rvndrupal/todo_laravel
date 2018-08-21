@@ -24,6 +24,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'ForumsController@index')->name('home');
+Route::get('/', 'ForumsController@index')->name('home.foros');
 
-Route::get('/forums/{forum}', 'ForumsController@show')->name('show');
+Route::get('/forums/{forum}', 'ForumsController@show')->name('show.forum');
+Route::post('/forums', 'ForumsController@store')->name('store.forum');
+
+Route::get('/posts/{post}', 'PostsController@show')->name('show.post');

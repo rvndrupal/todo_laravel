@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Forum;
+use App\Post;
 use Illuminate\Http\Request;
 
-class ForumsController extends Controller
+class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class ForumsController extends Controller
      */
     public function index()
     {
-        $forums=Forum::with(['replies','posts'])->orderBy('id','DESC')->paginate(3); //with mejora la respuestas de manera brutal
-
-        return view('forums.index', compact('forums'));
+        //
     }
 
     /**
@@ -37,33 +35,29 @@ class ForumsController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        Forum::create($request->all());
-
-        return back()->with('message',['success','Foro creado Correctamente']);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Forum  $forum
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Forum $forum)
+    public function show(Post $post)
     {
-        $posts=$forum->posts()->with(['owner'])->paginate(2); 
-        //un foro tiene relacion con post y post a su vez tiene relacion con user que es owner
-
-        return view('forums.detail',compact('forum','posts'));
+        $replies=$post->replies()->with(['author'])->paginate(2);
+        //dd($replies);
+        return view('posts.detail',compact('post','replies'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Forum  $forum
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Forum $forum)
+    public function edit(Post $post)
     {
         //
     }
@@ -72,10 +66,10 @@ class ForumsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Forum  $forum
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Forum $forum)
+    public function update(Request $request, Post $post)
     {
         //
     }
@@ -83,10 +77,10 @@ class ForumsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Forum  $forum
+     * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Forum $forum)
+    public function destroy(Post $post)
     {
         //
     }
