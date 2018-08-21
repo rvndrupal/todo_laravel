@@ -62,12 +62,11 @@
 
               <button type="submit" name="addForum" class="btn btn-primary">
                   {{ __("Agregar Foro") }}
-              </button>
-
-               
+              </button>               
             </form>
 
     </div>
 </div>
+
 
 @endsection

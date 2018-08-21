@@ -37,6 +37,13 @@
             @endif
 
             {{-- formulario --}}
+            <h2>{{ __("Añadir un nuevo Foro") }}</h2>
+
+            <hr>
+
+            @include('partials.errors')
+
+            
                 <form action="{{ route('store.forum') }}" method="POST">
                 {{--  para que aparescan los campos automaticos-->> b4-form-textarea  --}}
                 {{ csrf_field() }} {{-- Token de Seguridad --}}

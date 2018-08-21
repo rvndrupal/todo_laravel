@@ -84,7 +84,12 @@
 
 
             @yield('content')
+
+                
+
         </div>
+
+       
 
        
     </div>
