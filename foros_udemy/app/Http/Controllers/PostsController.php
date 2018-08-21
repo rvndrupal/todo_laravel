@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
+
 use App\Post;
 use Illuminate\Http\Request;
 
@@ -33,9 +35,12 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $post_request)
     {
-        //
+        //pide el user id se crea en el modelo
+        Post::create($post_request->input());
+
+        return back()->with('message',['success', __('Post creado Correctamente')]);
     }
 
     /**

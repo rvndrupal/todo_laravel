@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+use Blade;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        //se Crea el nuevo provider de la aplicacion para validar si estas logueado
+        \Blade::if('Logged', function(){
+            return  auth()->check();  //verifica si el usuario esta logueado
+        });
+
     }
 }

@@ -44,6 +44,37 @@
             
             @endif
 
+            {{-- Se utiliza el provider creado --}}
+            @Logged()
+                <h3 class="text-muted"> {{ __('Añadir un post al foro:  :name', ['name'=>$forum->name]) }}</h3>
+                @include('partials.errors')
+
+                <form action="{{ route('store.post') }}" method="POST">
+                    {{ csrf_field() }}
+
+                    <input type="hidden" name="forum_id" value="{{ $forum->id }}" />
+
+                    <div class="form-group">
+                      <label for="title">{{ __('Título') }}</label>
+                      <input type="text" class="form-control" name="title" id="title"  placeholder="Título" value="{{ old('title') }}">
+                    </div>
+                    <div class="form-group">
+                      <label for="description">{{ __('Descripción') }}</label>
+                      <textarea class="form-control" name="description" id="description" rows="3" value="{{ old('descriptions') }}"></textarea>
+                    </div>
+
+                    <button type="submit" name="addPost" class="btn btn-default">{{ __("Agrear Post") }}</button>
+
+
+
+                </form>
+
+            @else 
+
+                @include('partials.login_link',['message'=> __('Inicia Sesión para crear un post')])
+
+            @endLogged()
+
         </div>       
 
     </div>
