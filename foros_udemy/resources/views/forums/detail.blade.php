@@ -19,7 +19,7 @@
             @forelse($posts as $post )
             <div class="panel panel-default ">
                 <div class="panel-heading panel-heading-post">
-                   <a href="{{ route('show.post',$forum->id)}} }}"> {{ $post->title }}</a>
+                   <a href="{{ route('show.post', $post->slug) }}"> {{ $post->title }}</a>
                    <span class="pull-right">
                        {{ __('Owner') }}: {{ $post->owner->name }}
                    </span>

@@ -8,7 +8,7 @@
 
                 <h4>{{ __('Autor del Debate') }}: {{ $post->owner->name }}</h4>
 
-                <a href="{{ route('show.forum',$post->forum->id) }}" class="btn btn-info pull-right">
+                <a href="{{ route('show.forum',$post->forum->slug) }}" class="btn btn-info pull-right">
                     {{ __('Volver al foro :name',['name'=>$post->forum->name]) }}
                 </a>
 

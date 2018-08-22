@@ -9,8 +9,14 @@ use Illuminate\Support\Facades\App;
 class Post extends Model
 {
     protected $fillable=[
-        'forum_id','user_id','title','description'
+        'forum_id','user_id','title','description','slug',
     ];
+
+    //le decimos que la clave id sea el slug
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     //crea los eventos del modelo de eloquent cuando se crea un post como un tigger
     protected static function boot(){

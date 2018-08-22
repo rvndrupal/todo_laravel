@@ -22,6 +22,8 @@ class CreatePostsTable extends Migration
             $table->foreign('forum_id')->references('id')->on('forums');
 
             $table->string('title');
+            $table->string('slug');
+            $table->index('slug');//genera el indice
             $table->text('description');
 
             $table->timestamps();
