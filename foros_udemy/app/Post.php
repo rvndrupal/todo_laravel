@@ -45,4 +45,9 @@ class Post extends Model
         return $this->hasMany(Reply::class);
     }
 
+    //'/images/{path}/{attachment}'
+	public function pathImagen() {
+		return "../images/posts/" . $this->imagen;
+	}
+
 }

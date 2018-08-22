@@ -43,6 +43,12 @@ class Reply extends Model
         //la magia esta en el forum checar model foro
     }
 
+     //'/images/{path}/{attachment}'
+	public function pathImagen() {
+		return "../images/replies/" . $this->imagen;
+	}
+
+
 
 
 

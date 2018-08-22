@@ -29,6 +29,10 @@
 
                 <div class="panel-body">
                     {{ $reply->reply }}
+
+                    @if($reply->imagen)
+                    <img src="{{ $reply->pathImagen() }}" class="img-responsive img-rounded">
+                @endif
                 </div>
 
             </div>

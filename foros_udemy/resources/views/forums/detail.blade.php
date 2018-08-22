@@ -27,6 +27,13 @@
 
                 <div class="panel-body">
                     {{ $post->description }}
+
+                     
+                     @if($post->imagen)
+                     
+                     {{--  metodo creado en el modelo --}} 
+                    <img src="{{ $post->pathImagen() }}" class="img-responsive img-rounded">
+                     @endif
                 </div>
 
             </div>

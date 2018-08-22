@@ -1,15 +1,8 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 
 /*Route::get('/', function () {
@@ -34,3 +27,14 @@ Route::get('/posts/{post}', 'PostsController@show')->name('show.post');
 Route::post('/posts', 'PostsController@store')->name('store.post');
 
 Route::post('/riplies', 'RepliesController@store')->name('store.reply');
+
+
+//ruta imagenes
+Route::get('/images/{path}/{imagen}', function($path, $imagen) {
+	$storagePath = Storage::disk($path)->getDriver()->getAdapter()->getPathPrefix();
+	$imageFilePath = $storagePath . $imagen;
+
+	if(File::exists($imageFilePath)) {
+		return Image::make($imageFilePath)->response();
+	}
+});
