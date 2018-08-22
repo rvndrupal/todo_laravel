@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\App;
 
 class Reply extends Model
 {
@@ -11,6 +12,17 @@ class Reply extends Model
     ];
 
     protected $appends= ['forums'];  //entiendo que es como abrir la instancia para la relación
+
+    //crea los eventos del modelo de eloquent cuando se crea un post como un tigger
+    protected static function boot(){
+        parent::boot();
+
+        static::creating(function($reply){ //al momento de crear un post 
+            if( ! App::runningInConsole()){ //si no se ejecuta desde la linea de comando muy fregon
+                $reply->user_id=auth()->id();// le ponga el id del Usuario que es logueado                
+            }
+        });
+    }
 
 
     public function post()

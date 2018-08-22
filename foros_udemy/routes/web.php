@@ -32,3 +32,5 @@ Route::post('/forums', 'ForumsController@store')->name('store.forum');
 Route::get('/posts/{post}', 'PostsController@show')->name('show.post');
 
 Route::post('/posts', 'PostsController@store')->name('store.post');
+
+Route::post('/riplies', 'RepliesController@store')->name('store.reply');

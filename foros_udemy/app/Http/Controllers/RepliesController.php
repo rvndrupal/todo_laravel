@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Reply;
 use Illuminate\Http\Request;
+use App\Rules\ValidReply;
 
-class ReplyController extends Controller
+class RepliesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,7 +36,13 @@ class ReplyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(),[
+            'reply'=> ['required', new ValidReply],  //utiliza una regla de validacion de Rules         
+        ]);
+
+        Reply::create($request->input());
+
+        return back()->with('message', ['success', __('Respuesta añadida correctamente')]);
     }
 
     /**
