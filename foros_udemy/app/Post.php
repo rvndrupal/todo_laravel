@@ -24,7 +24,8 @@ class Post extends Model
 
         static::creating(function($post){ //al momento de crear un post 
             if( ! App::runningInConsole()){ //si no se ejecuta desde la linea de comando muy fregon
-                $post->user_id=auth()->id();// le ponga el id del Usuario que es logueado                
+                $post->user_id=auth()->id();// le ponga el id del Usuario que es logueado  
+                $post->slug=str_slug($post->title, '-'); //generamos el slug      
             }
         });
     }

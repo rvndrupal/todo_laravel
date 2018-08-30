@@ -56,7 +56,7 @@
                 <h3 class="text-muted"> {{ __('Añadir un post al foro:  :name', ['name'=>$forum->name]) }}</h3>
                 @include('partials.errors')
 
-                <form action="{{ route('store.post') }}" method="POST">
+                <form action="{{ route('store.post') }}" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <input type="hidden" name="forum_id" value="{{ $forum->id }}" />
@@ -66,9 +66,15 @@
                       <input type="text" class="form-control" name="title" id="title"  placeholder="Título" value="{{ old('title') }}">
                     </div>
                     <div class="form-group">
-                      <label for="description">{{ __('Descripción') }}</label>
-                      <textarea class="form-control" name="description" id="description" rows="3" value="{{ old('descriptions') }}"></textarea>
+                        <label for="description" class="col-md-12 control-label">{{ __("Descripción") }}</label>
+                        <textarea id="description" class="form-control"
+                                  name="description">{{ old('description') }}</textarea>
                     </div>
+
+                    <label class="btn btn-warning" for="file">
+                        <input id="file" name="file" type="file" style="display:none;">
+                        {{ __("Subir archivo") }}
+                    </label>
 
                     <button type="submit" name="addPost" class="btn btn-default">{{ __("Agrear Post") }}</button>
 

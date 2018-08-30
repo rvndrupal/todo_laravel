@@ -4,6 +4,8 @@ Instalar Laravel
 
 composer create-project laravel/laravel blog "5.5.*" --prefer-dist 
 
+composer create-project laravel/laravel blog "5.6.7" --prefer-dist 
+
 Laravel collective
 
 composer require "laravelcollective/html":"^5.4.0"

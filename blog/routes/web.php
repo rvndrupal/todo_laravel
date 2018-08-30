@@ -199,4 +199,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('users/{user}/edit', 'UserController@edit')->name('users.edit')
     ->middleware('permission:users.edit');
 
+    //ruta ventas demo
+    Route::get('ventas', 'VentaController@index')->name('ventas.index')
+    ->middleware('permission:ventas.index');  
+
+
 });

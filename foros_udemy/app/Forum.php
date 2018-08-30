@@ -12,6 +12,16 @@ class Forum extends Model
         'name','description','slug',
     ];
 
+    protected static function boot() {
+		parent::boot();
+
+		static::creating(function($forum) {
+			if( ! App::runningInConsole() ) {
+				$forum->slug = str_slug($forum->name, "-");
+			}
+		});
+	}
+
     //le decimos que la clave id sea el slug
     public function getRouteKeyName()
     {

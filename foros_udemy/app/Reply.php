@@ -44,6 +44,7 @@ class Reply extends Model
     }
 
      //'/images/{path}/{attachment}'
+     //checra el fylesystem dar de alta la carga
 	public function pathImagen() {
 		return "../images/replies/" . $this->imagen;
 	}

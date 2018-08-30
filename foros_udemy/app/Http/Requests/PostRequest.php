@@ -26,7 +26,8 @@ class PostRequest extends FormRequest
         return [
             'forum_id' => 'required|exists:forums,id',
 	        'title' => 'required|unique:posts|max:100',
-	        'description' => 'required',
+            'description' => 'required',
+            'file'=> 'image',
         ];
     }
 }

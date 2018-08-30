@@ -37,6 +37,19 @@ class PostsController extends Controller
      */
     public function store(PostRequest $post_request)
     {
+        //dd($post_request->file());
+
+        
+        if($post_request->hasFile('file') && $post_request->file('file')->isValid()) {
+            $filename = uploadFile('file', 'posts'); //se carga con un helper que esta en http helper.php
+            //para que funcione ir a composer.json  "files": ["app/Http/helpers.php"]
+			$post_request->merge(['imagen' => $filename]);
+		}
+
+        //para subir una imagen se crea un helper como un bundle en http/helpers.php
+
+
+
         //pide el user id se crea en el modelo
         Post::create($post_request->input());
 

@@ -265,5 +265,13 @@ class PermissionsTableSeeder extends Seeder
         ]);
         //POST
 
+        //ventas demo permisos
+        Permission::create([
+            'name' => 'Navegar en Ventas',
+            'slug' => 'ventas.index',
+            'description'  => 'Navega en la Página de Ventas',
+
+        ]);
+
     }
 }

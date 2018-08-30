@@ -80,6 +80,12 @@
                             <a class="nav-link" href="{{ route('posts.index') }}">Post</a>
                         </li>
                         @endcan
+
+                        @can('ventas.index')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('ventas.index') }}">Ventas</a>
+                        </li>
+                        @endcan
                         
 
                     </ul>
