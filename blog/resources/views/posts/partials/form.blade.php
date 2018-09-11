@@ -3,7 +3,7 @@
 
 
 <div class="from-group">    
-    {!! Form::label('name','Nombre de la Categoría') !!}
+    {!! Form::label('name','Nombre del Post') !!}
     
     {!! Form::text('name', null, ['class' => 'form-control', 'id'=>'name']) !!}   
     

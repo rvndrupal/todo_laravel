@@ -16,7 +16,7 @@ class PostsTableSeeder extends Seeder
             $post->tags()->attach([
                 rand(1,5), //el primer post se relaciona con las primeras cinco etiquetas
                 rand(6,14),
-                rand(15,20),
+                rand(15,10),
             ]);
         });
     }

@@ -60,7 +60,8 @@ class PostController extends Controller
         }
         
         //relacion del post y los tags
-        $post->tags()->attach($request->get('tags'));
+        $post->tags()->attach($request->get('tags')); //la magia de muchos a muchos
+        //super importante para que se inserte los valores en los dos registros
 
         return redirect()->route('posts.edit', $post->id)
         ->with('info','Post creada con exito');
@@ -121,6 +122,7 @@ class PostController extends Controller
         
         //relacion del post y los tags ojo con el sync  sincroniza la actualización
         $post->tags()->sync($request->get('tags'));
+        //sincroniza y actualiza los valor es de las tablas pivote
 
         return redirect()->route('posts.edit', $post->id)
         ->with('info','Post Actualizada  con exito');

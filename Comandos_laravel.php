@@ -354,3 +354,53 @@ sy Shell v0.9.6 (PHP 7.1.14 — cli) by Justin Hileman
  php artisan make:provider  ComposerServisProvider
 
  Generar los archivos-> composer dump-autoload
+
+ ############################################################################
+ 24.-  para insertar valores en las tablas pivote.
+
+  $post->tags()->attach($request->get('tags')); //la magia de muchos a muchos para insertar
+
+  $post->tags()->sync($request->get('tags')); //para actualizar
+
+   public function store(PostStoreRequest $request)
+    {
+        $post=Post::create($request->all());
+
+        if($request->file('file')){ //i se manda el archivo
+            $path=Storage::disk('public')->put('image', $request->file('file'));
+            //utiliza la funcion de guardar en public crea la carpeta image y pasa el archivo
+            $post->fill(['file' => asset($path)])->save(); //actualizame la ruta en el post
+            //el asset toma toda la ruta y se genera correctamente toda la ruta
+        }
+        
+        //relacion del post y los tags
+        $post->tags()->attach($request->get('tags')); //la magia de muchos a muchos
+        //super importante para que se inserte los valores en los dos registros
+
+        return redirect()->route('posts.edit', $post->id)
+        ->with('info','Post creada con exito');
+    }
+
+    public function update(PostUpdateRequest $request, Post $post)
+    {
+        
+        $post->update($request->all());
+
+
+        if($request->file('file')){ //si se manda el archivo
+            $path=Storage::disk('public')->put('image', $request->file('file'));
+            //utiliza la funcion de guardar en public crea la carpeta image y pasa el archivo
+            $post->fill(['file' => asset($path)])->save(); //actualizame la ruta en el post
+            //el asset toma toda la ruta y se genera correctamente toda la ruta
+        }
+        
+        //relacion del post y los tags ojo con el sync  sincroniza la actualización
+        $post->tags()->sync($request->get('tags'));
+        //sincroniza y actualiza los valor es de las tablas pivote
+
+        return redirect()->route('posts.edit', $post->id)
+        ->with('info','Post Actualizada  con exito');
+
+    }
+
+ ############################################################################
